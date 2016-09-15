@@ -16,9 +16,9 @@
 #include <string>
 #include "uint256.h"
 
-#define PPCOIN_PORT  6661
-#define RPC_PORT     6662
-#define TESTNET_PORT 6663
+#define PPCOIN_PORT  8169
+#define RPC_PORT     8168
+#define TESTNET_PORT 18169
 #define GXCDNS_PORT  5335
 
 extern bool fTestNet;

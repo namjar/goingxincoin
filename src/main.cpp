@@ -2387,7 +2387,7 @@ bool LoadBlockIndex(bool fAllowNew)
         //   vMerkleTree: 4a5e1e
 
         // Genesis block
-        const char* pszTimestamp = "2013: Emergence is inevitable! heideg.livejournal.com/313676.html";
+        const char* pszTimestamp = "Integrity is the lifeblood of life, is the foundation of all value.";
         CTransaction txNew;
         txNew.nTime = 1386627289;
         txNew.vin.resize(1);
