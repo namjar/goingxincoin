@@ -1,6 +1,6 @@
 #
 # This is example of personal card for emerCoin Info system
-# This card will be retrieved by reference to NVS from EMCSSL subsystem.
+# This card will be retrieved by reference to NVS from GXCSSL subsystem.
 #
 # All fields are OPTIONAL
 #
@@ -39,5 +39,5 @@ Email		abdul@bubbleinflators.com
 WEB		http://www.bubbleinflators.com/superabdul
 Facebook	Abdul.KurbashiBey
 Twitter		AbdulKurbashiBey
-EMC	EdvJ7b7zPL6gj5f8VNfX6zmVcftb35sKX2	# EmerCoin payment address
+EMC	EdvJ7b7zPL6gj5f8VNfX6zmVcftb35sKX2	# GongxinCoin payment address
 BTC	1MkKuU78bikC2ACLspofQZnNb6Vz9AP1Np	# BitCoin payment address

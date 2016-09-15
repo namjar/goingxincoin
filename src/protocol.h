@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
-// Copyright (c) 2013-2014 The EmerCoin developers
+// Copyright (c) 2013-2014 The GongxinCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -19,7 +19,7 @@
 #define PPCOIN_PORT  6661
 #define RPC_PORT     6662
 #define TESTNET_PORT 6663
-#define EMCDNS_PORT  5335
+#define GXCDNS_PORT  5335
 
 extern bool fTestNet;
 

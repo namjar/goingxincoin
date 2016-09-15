@@ -52,10 +52,10 @@
 #     mkdir miniupnpc
 #     cp *.h miniupnpc/
 #
-# - Build emercoind.exe
+# - Build gongxincoind.exe
 #   in MinGW MSYS
-#     cd emercoin/src
-#     make emercoind.exe -f makefile.mingw USE_UPNP=1
+#     cd gongxincoin/src
+#     make gongxincoind.exe -f makefile.mingw USE_UPNP=1
 #
 #
 
@@ -124,16 +124,16 @@ OBJS= \
     obj/kernel.o \
     obj/stun.o \
     obj/namecoin.o \
-    obj/emcdns.o \
+    obj/gxcdns.o \
     obj/checkpoints_eb.o
 
 
-all: emercoind.exe
+all: gongxincoind.exe
 
 obj/%.o: %.cpp $(HEADERS)
 	g++ -c $(CFLAGS) -o $@ $<
 
-emercoind.exe: $(OBJS:obj/%=obj/%)
+gongxincoind.exe: $(OBJS:obj/%=obj/%)
 	g++ $(CFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -141,11 +141,11 @@ TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
 obj-test/%.o: test/%.cpp $(HEADERS)
 	g++ -c $(TESTDEFS) $(CFLAGS) -o $@ $<
 
-test_emercoin.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
+test_gongxincoin.exe: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	g++ $(CFLAGS) -o $@ $(LIBPATHS) $^ -lboost_unit_test_framework $(LIBS)
 
 clean:
-	-del /Q emercoind test_emercoin
+	-del /Q gongxincoind test_gongxincoin
 	-del /Q obj\*
 	-del /Q obj-test\*
 	-del /Q build.h

@@ -1,6 +1,6 @@
 src/*.exe
-src/emercoind
-src/test_emercoin
+src/gongxincoind
+src/test_gongxincoin
 src/build.h
 .*.swp
 *.*~*
@@ -12,7 +12,7 @@ src/build.h
 #compilation and Qt preprocessor part
 *.qm
 Makefile
-emercoin-qt
+gongxincoin-qt
 #resources cpp
 qrc_*.cpp
 #qt creator

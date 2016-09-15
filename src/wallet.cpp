@@ -353,7 +353,7 @@ bool CWallet::AddToWallet(const CWalletTx& wtxIn, bool fOverwriteTimestamp)
         wtx.BindWallet(this);
         bool fInsertedNew = ret.second;
 
-        // emercoin: overwrite timestamp if called from -rescan option
+        // gongxincoin: overwrite timestamp if called from -rescan option
         if (fOverwriteTimestamp)
             wtx.nTimeReceived = wtx.nTime;
         else if (fInsertedNew)
@@ -1326,7 +1326,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64> >& vecSend, CW
 
                     // Fill a vout to ourself
                     // TODO: pass in scriptChange instead of reservekey so
-                    // change transaction isn't always pay-to-emercoin-address
+                    // change transaction isn't always pay-to-gongxincoin-address
                     CScript scriptChange;
                     scriptChange.SetDestination(vchPubKey.GetID());;
 
@@ -1715,7 +1715,7 @@ string CWallet::SendMoneyToDestination(const CTxDestination& address, int64 nVal
     if (nValue + nTransactionFee > GetBalance())
         return _("Insufficient funds");
 
-    // Parse emercoin address
+    // Parse gongxincoin address
     CScript scriptPubKey;
     scriptPubKey.SetDestination(address);
 

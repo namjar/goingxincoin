@@ -29,7 +29,7 @@ echo "Please, enter password for certificate package."
 echo "You will use this password, when install certificate into browser"
 
 openssl pkcs12 -export -in $SERIAL.crt -inkey $SERIAL.key \
-            -certfile CA/emcssl_ca.crt -out $SERIAL.p12
+            -certfile CA/gxcssl_ca.crt -out $SERIAL.p12
 
 #openssl x509 -noout -text -in $SERIAL.crt
 
@@ -44,7 +44,7 @@ SHA256=${SHA256#'sha256 fingerprint='}
 echo $SHA256 >>$FNAME
 
 echo
-echo "Please, deposit into EmerCoin NVS pair:"
+echo "Please, deposit into GongxinCoin NVS pair:"
 echo "  Key:   ssl:$SERIAL"
 echo "  Value: sha256=$SHA256"
 

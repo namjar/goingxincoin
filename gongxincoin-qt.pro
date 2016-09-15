@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = emercoin-qt
+TARGET = gongxincoin-qt
 VERSION = 0.3.7.0
 INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE
@@ -169,7 +169,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/nametablemodel.h \
     src/qt/managenamespage.h \
     src/hooks.h \
-    src/emcdns.h \
+    src/gxcdns.h \
     src/qt/clickablelabel.h\
     src/checkpoints_eb.h
 
@@ -234,7 +234,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/namecoin.cpp \
     src/qt/nametablemodel.cpp \
     src/qt/managenamespage.cpp \
-    src/emcdns.cpp \
+    src/gxcdns.cpp \
     src/checkpoints_eb.cpp
 
 RESOURCES += \
@@ -265,7 +265,7 @@ SOURCES += src/qt/test/test_main.cpp \
 HEADERS += src/qt/test/uritests.h
 DEPENDPATH += src/qt/test
 QT += testlib
-TARGET = emercoin-qt_test
+TARGET = gongxincoin-qt_test
 DEFINES += BITCOIN_QT_TEST
 }
 
@@ -347,8 +347,8 @@ macx:HEADERS += src/qt/macdockiconhandler.h
 macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
-macx:ICON = src/qt/res/icons/emercoin.icns
-macx:TARGET = "Emercoin-Qt"
+macx:ICON = src/qt/res/icons/gongxincoin.icns
+macx:TARGET = "Gongxincoin-Qt"
 
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
 INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH

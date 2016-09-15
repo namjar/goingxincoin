@@ -1,0 +1,6 @@
+debian/bin/gongxincoin-qt usr/bin
+gongxincoin-qt usr/lib/gongxincoin
+share/pixmaps/bitcoin32.xpm usr/share/pixmaps
+share/pixmaps/bitcoin80.xpm usr/share/pixmaps
+debian/gongxincoin-qt.desktop usr/share/applications
+debian/gongxincoin-qt.protocol usr/share/kde4/services/

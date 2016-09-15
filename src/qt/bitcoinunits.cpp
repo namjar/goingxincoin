@@ -45,9 +45,9 @@ QString BitcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("EmerCoins");
-    case mBTC: return QString("Milli-EmerCoins (1 / 1,000)");
-    case uBTC: return QString("Micro-EmerCoins (1 / 1,000,000)");
+    case BTC: return QString("GongxinCoins");
+    case mBTC: return QString("Milli-GongxinCoins (1 / 1,000)");
+    case uBTC: return QString("Micro-GongxinCoins (1 / 1,000,000)");
     default: return QString("???");
     }
 }

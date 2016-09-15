@@ -9,7 +9,7 @@ namespace Ui {
 class WalletModel;
 class SendCoinsRecipient;
 
-/** A single entry in the dialog for sending emercoins. */
+/** A single entry in the dialog for sending gongxincoins. */
 class SendCoinsEntry : public QFrame
 {
     Q_OBJECT

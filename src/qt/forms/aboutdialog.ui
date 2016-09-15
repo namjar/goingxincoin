@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>About EmerCoin</string>
+   <string>About GongxinCoin</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <item>
@@ -50,7 +50,7 @@
        <item>
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>&lt;b&gt;EmerCoin&lt;/b&gt; version</string>
+          <string>&lt;b&gt;GongxinCoin&lt;/b&gt; version</string>
          </property>
          <property name="textInteractionFlags">
           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -88,7 +88,7 @@
      <item>
       <widget class="QLabel" name="label_ppcoin_copyright">
        <property name="text">
-        <string>Copyright © 2013-2015 Emercoin Developers</string>
+        <string>Copyright © 2013-2015 Gongxincoin Developers</string>
        </property>
        <property name="wordWrap">
         <bool>true</bool>
@@ -99,7 +99,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_emercoin_copyright">
+      <widget class="QLabel" name="label_gongxincoin_copyright">
        <property name="text">
         <string>Copyright © 2011-2014 PPCoin Developers</string>
        </property>

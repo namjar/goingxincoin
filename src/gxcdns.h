@@ -1,9 +1,9 @@
-#ifndef EMCDNS_H
-#define EMCDNS_H
+#ifndef GXCDNS_H
+#define GXCDNS_H
 
 
-#define EMCDNS_DAPSIZE     (8 * 1024)
-#define EMCDNS_DAPTRESHOLD 300 // 20K/min limit answer
+#define GXCDNS_DAPSIZE     (8 * 1024)
+#define GXCDNS_DAPTRESHOLD 300 // 20K/min limit answer
 
 struct DNSHeader {
   static const uint32_t QR_MASK = 0x8000;
@@ -33,10 +33,10 @@ struct DNSAP {		// DNS Amplifier Protector ExpDecay structure
   uint16_t ed_size;	// ExpDecay output size in 64-byte units
 } __attribute__((packed));
 
-class EmcDns {
+class GxcDns {
   public:
-     EmcDns();
-    ~EmcDns();
+     GxcDns();
+    ~GxcDns();
 
     int Reset(const char *bind_ip, uint16_t port_no, 
 	    const char *gw_suffix, const char *allowed_suff, const char *local_fname, uint8_t verbose); 
@@ -81,7 +81,7 @@ class EmcDns {
     struct sockaddr_in m_clientAddress;
     struct sockaddr_in m_address;
     socklen_t m_addrLen;
-}; // class EmcDns
+}; // class GxcDns
 
-#endif // EMCDNS_H
+#endif // GXCDNS_H
 

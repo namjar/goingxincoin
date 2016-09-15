@@ -1,6 +1,6 @@
 #
-# This is example of corp InfoCard for EmerCoin Info system
-# This card will be retrieved by reference to NVS from EMCSSL subsystem,
+# This is example of corp InfoCard for GongxinCoin Info system
+# This card will be retrieved by reference to NVS from GXCSSL subsystem,
 # or imported by another card.
 #
 # All fields are OPTIONAL

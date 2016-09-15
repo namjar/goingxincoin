@@ -1,0 +1,11 @@
+[Unit]
+Description=Gongxincoin Wallet
+
+[Service]
+ExecStart=/usr/bin/gongxincoind -daemon
+ExecStop=/usr/bin/gongxincoind -daemon stop
+PIDFile=/var/lib/gxc/.gongxincoin/gongxincoin.pid
+User=gxc
+
+[Install]
+WantedBy=multi-user.target

@@ -1,5 +1,5 @@
 /*
- * Qt4 emercoin GUI.
+ * Qt4 gongxincoin GUI.
  *
  * W.J. van der Laan 2011-2012
  * The Bitcoin Developers 2011-2012
@@ -60,7 +60,7 @@
 
 #include <iostream>
 
-EmercoinGUI::EmercoinGUI(QWidget *parent):
+GongxincoinGUI::GongxincoinGUI(QWidget *parent):
     QMainWindow(parent),
     clientModel(0),
     walletModel(0),
@@ -72,7 +72,7 @@ EmercoinGUI::EmercoinGUI(QWidget *parent):
     rpcConsole(0)
 {
     resize(850, 550);
-    setWindowTitle(tr("EmerCoin Wallet"));
+    setWindowTitle(tr("GongxinCoin Wallet"));
 #ifndef Q_WS_MAC
     setWindowIcon(QIcon(":icons/ppcoin"));
 #else
@@ -172,14 +172,14 @@ EmercoinGUI::EmercoinGUI(QWidget *parent):
     gotoOverviewPage();
 }
 
-EmercoinGUI::~EmercoinGUI()
+GongxincoinGUI::~GongxincoinGUI()
 {
 #ifdef Q_WS_MAC
     delete appMenuBar;
 #endif
 }
 
-void EmercoinGUI::createActions()
+void GongxincoinGUI::createActions()
 {
     QActionGroup *tabGroup = new QActionGroup(this);
 
@@ -208,13 +208,13 @@ void EmercoinGUI::createActions()
     tabGroup->addAction(receiveCoinsAction);
 
     sendCoinsAction = new QAction(QIcon(":/icons/send"), tr("&Send coins"), this);
-    sendCoinsAction->setToolTip(tr("Send coins to a emercoin address"));
+    sendCoinsAction->setToolTip(tr("Send coins to a gongxincoin address"));
     sendCoinsAction->setCheckable(true);
     sendCoinsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_2));
     tabGroup->addAction(sendCoinsAction);
 
     manageNamesAction = new QAction(QIcon(":/icons/name2"), tr("&Manage Names"), this);
-    manageNamesAction->setStatusTip(tr("Manage values registered via Emercoin"));
+    manageNamesAction->setStatusTip(tr("Manage values registered via Gongxincoin"));
     manageNamesAction->setToolTip(manageNamesAction->statusTip());
     manageNamesAction->setCheckable(true);
     manageNamesAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
@@ -247,16 +247,16 @@ void EmercoinGUI::createActions()
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
     aboutAction = new QAction(QIcon(":/icons/ppcoin"), tr("&About %1").arg(qApp->applicationName()), this);
-    aboutAction->setToolTip(tr("Show information about EmerCoin"));
+    aboutAction->setToolTip(tr("Show information about GongxinCoin"));
     aboutAction->setMenuRole(QAction::AboutRole);
     aboutQtAction = new QAction(tr("About &Qt"), this);
     aboutQtAction->setToolTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options..."), this);
-    optionsAction->setToolTip(tr("Modify configuration options for emercoin"));
+    optionsAction->setToolTip(tr("Modify configuration options for gongxincoin"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
-    toggleHideAction = new QAction(QIcon(":/icons/ppcoin"), tr("Show/Hide &EmerCoin"), this);
-    toggleHideAction->setToolTip(tr("Show or hide the EmerCoin window"));
+    toggleHideAction = new QAction(QIcon(":/icons/ppcoin"), tr("Show/Hide &GongxinCoin"), this);
+    toggleHideAction->setToolTip(tr("Show or hide the GongxinCoin window"));
     exportAction = new QAction(QIcon(":/icons/export"), tr("&Export..."), this);
     exportAction->setToolTip(tr("Export the data in the current tab to a file"));
     encryptWalletAction = new QAction(QIcon(":/icons/lock_closed"), tr("&Encrypt Wallet"), this);
@@ -280,7 +280,7 @@ void EmercoinGUI::createActions()
     connect(changePassphraseAction, SIGNAL(triggered()), this, SLOT(changePassphrase()));
 }
 
-void EmercoinGUI::createMenuBar()
+void GongxincoinGUI::createMenuBar()
 {
 #ifdef Q_WS_MAC
     // Create a decoupled menu bar on Mac which stays even if the window is closed
@@ -313,7 +313,7 @@ void EmercoinGUI::createMenuBar()
     help->addAction(aboutQtAction);
 }
 
-void EmercoinGUI::createToolBars()
+void GongxincoinGUI::createToolBars()
 {
     QToolBar *toolbar = addToolBar(tr("Tabs toolbar"));
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -332,7 +332,7 @@ void EmercoinGUI::createToolBars()
     toolbar2->addAction(exportAction);
 }
 
-void EmercoinGUI::setClientModel(ClientModel *clientModel)
+void GongxincoinGUI::setClientModel(ClientModel *clientModel)
 {
     this->clientModel = clientModel;
     if(clientModel)
@@ -367,7 +367,7 @@ void EmercoinGUI::setClientModel(ClientModel *clientModel)
     }
 }
 
-void EmercoinGUI::setWalletModel(WalletModel *walletModel)
+void GongxincoinGUI::setWalletModel(WalletModel *walletModel)
 {
     this->walletModel = walletModel;
     if(walletModel)
@@ -398,14 +398,14 @@ void EmercoinGUI::setWalletModel(WalletModel *walletModel)
     }
 }
 
-void EmercoinGUI::createTrayIcon()
+void GongxincoinGUI::createTrayIcon()
 {
     QMenu *trayIconMenu;
 #ifndef Q_WS_MAC
     trayIcon = new QSystemTrayIcon(this);
     trayIconMenu = new QMenu(this);
     trayIcon->setContextMenu(trayIconMenu);
-    trayIcon->setToolTip(tr("EmerCoin client"));
+    trayIcon->setToolTip(tr("GongxinCoin client"));
     trayIcon->setIcon(QIcon(":/icons/toolbar"));
     connect(trayIcon, SIGNAL(activated(QSystemTrayIcon::ActivationReason)),
             this, SLOT(trayIconActivated(QSystemTrayIcon::ActivationReason)));
@@ -434,21 +434,21 @@ void EmercoinGUI::createTrayIcon()
     trayIconMenu->addAction(quitAction);
 #endif
 
-    notificator = new Notificator(tr("emercoin-qt"), trayIcon);
+    notificator = new Notificator(tr("gongxincoin-qt"), trayIcon);
 }
 
 #ifndef Q_WS_MAC
-void EmercoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
+void GongxincoinGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
 {
     if(reason == QSystemTrayIcon::Trigger)
     {
-        // Click on system tray icon triggers "show/hide emercoin"
+        // Click on system tray icon triggers "show/hide gongxincoin"
         toggleHideAction->trigger();
     }
 }
 #endif
 
-void EmercoinGUI::toggleHidden()
+void GongxincoinGUI::toggleHidden()
 {
     // activateWindow() (sometimes) helps with keyboard focus on Windows
     if (isHidden())
@@ -470,7 +470,7 @@ void EmercoinGUI::toggleHidden()
         hide();
 }
 
-void EmercoinGUI::optionsClicked()
+void GongxincoinGUI::optionsClicked()
 {
     if(!clientModel || !clientModel->getOptionsModel())
         return;
@@ -479,14 +479,14 @@ void EmercoinGUI::optionsClicked()
     dlg.exec();
 }
 
-void EmercoinGUI::aboutClicked()
+void GongxincoinGUI::aboutClicked()
 {
     AboutDialog dlg;
     dlg.setModel(clientModel);
     dlg.exec();
 }
 
-void EmercoinGUI::setNumConnections(int count)
+void GongxincoinGUI::setNumConnections(int count)
 {
     QString icon;
     switch(count)
@@ -498,10 +498,10 @@ void EmercoinGUI::setNumConnections(int count)
     default: icon = ":/icons/connect_4"; break;
     }
     labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to EmerCoin network", "", count));
+    labelConnectionsIcon->setToolTip(tr("%n active connection(s) to GongxinCoin network", "", count));
 }
 
-void EmercoinGUI::setNumBlocks(int count)
+void GongxincoinGUI::setNumBlocks(int count)
 {
     // don't show / hide progressBar and it's label if we have no connection(s) to the network
     if (!clientModel || clientModel->getNumConnections() == 0)
@@ -601,7 +601,7 @@ void EmercoinGUI::setNumBlocks(int count)
     progressBar->setToolTip(tooltip);
 }
 
-void EmercoinGUI::error(const QString &title, const QString &message, bool modal)
+void GongxincoinGUI::error(const QString &title, const QString &message, bool modal)
 {
     // Report errors from network/worker thread
     if(modal)
@@ -612,7 +612,7 @@ void EmercoinGUI::error(const QString &title, const QString &message, bool modal
     }
 }
 
-void EmercoinGUI::changeEvent(QEvent *e)
+void GongxincoinGUI::changeEvent(QEvent *e)
 {
     QMainWindow::changeEvent(e);
 #ifndef Q_WS_MAC // Ignored on Mac
@@ -631,7 +631,7 @@ void EmercoinGUI::changeEvent(QEvent *e)
 #endif
 }
 
-void EmercoinGUI::closeEvent(QCloseEvent *event)
+void GongxincoinGUI::closeEvent(QCloseEvent *event)
 {
     if(clientModel)
     {
@@ -646,7 +646,7 @@ void EmercoinGUI::closeEvent(QCloseEvent *event)
     QMainWindow::closeEvent(event);
 }
 
-void EmercoinGUI::askFee(qint64 nFeeRequired, bool *payFee)
+void GongxincoinGUI::askFee(qint64 nFeeRequired, bool *payFee)
 {
     QString strMessage =
         tr("This transaction is over the size limit.  You can still send it for a fee of %1, "
@@ -659,7 +659,7 @@ void EmercoinGUI::askFee(qint64 nFeeRequired, bool *payFee)
     *payFee = (retval == QMessageBox::Yes);
 }
 
-void EmercoinGUI::incomingTransaction(const QModelIndex & parent, int start, int end)
+void GongxincoinGUI::incomingTransaction(const QModelIndex & parent, int start, int end)
 {
     if(!walletModel || !clientModel)
         return;
@@ -694,7 +694,7 @@ void EmercoinGUI::incomingTransaction(const QModelIndex & parent, int start, int
     }
 }
 
-void EmercoinGUI::gotoOverviewPage()
+void GongxincoinGUI::gotoOverviewPage()
 {
     overviewAction->setChecked(true);
     centralWidget->setCurrentWidget(overviewPage);
@@ -703,7 +703,7 @@ void EmercoinGUI::gotoOverviewPage()
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
-void EmercoinGUI::gotoHistoryPage()
+void GongxincoinGUI::gotoHistoryPage()
 {
     historyAction->setChecked(true);
     centralWidget->setCurrentWidget(transactionsPage);
@@ -713,7 +713,7 @@ void EmercoinGUI::gotoHistoryPage()
     connect(exportAction, SIGNAL(triggered()), transactionView, SLOT(exportClicked()));
 }
 
-void EmercoinGUI::gotoAddressBookPage()
+void GongxincoinGUI::gotoAddressBookPage()
 {
     addressBookAction->setChecked(true);
     centralWidget->setCurrentWidget(addressBookPage);
@@ -723,7 +723,7 @@ void EmercoinGUI::gotoAddressBookPage()
     connect(exportAction, SIGNAL(triggered()), addressBookPage, SLOT(exportClicked()));
 }
 
-void EmercoinGUI::gotoReceiveCoinsPage()
+void GongxincoinGUI::gotoReceiveCoinsPage()
 {
     receiveCoinsAction->setChecked(true);
     centralWidget->setCurrentWidget(receiveCoinsPage);
@@ -733,7 +733,7 @@ void EmercoinGUI::gotoReceiveCoinsPage()
     connect(exportAction, SIGNAL(triggered()), receiveCoinsPage, SLOT(exportClicked()));
 }
 
-void EmercoinGUI::gotoSendCoinsPage()
+void GongxincoinGUI::gotoSendCoinsPage()
 {
     sendCoinsAction->setChecked(true);
     centralWidget->setCurrentWidget(sendCoinsPage);
@@ -742,7 +742,7 @@ void EmercoinGUI::gotoSendCoinsPage()
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
-void EmercoinGUI::gotoManageNamesPage()
+void GongxincoinGUI::gotoManageNamesPage()
 {
     manageNamesAction->setChecked(true);
     centralWidget->setCurrentWidget(manageNamesPage);
@@ -752,7 +752,7 @@ void EmercoinGUI::gotoManageNamesPage()
     connect(exportAction, SIGNAL(triggered()), manageNamesPage, SLOT(exportClicked()));
 }
 
-void EmercoinGUI::gotoMessagePage()
+void GongxincoinGUI::gotoMessagePage()
 {
 #ifdef FIRST_CLASS_MESSAGING
     messageAction->setChecked(true);
@@ -766,20 +766,20 @@ void EmercoinGUI::gotoMessagePage()
 #endif
 }
 
-void EmercoinGUI::gotoMessagePage(QString addr)
+void GongxincoinGUI::gotoMessagePage(QString addr)
 {
     gotoMessagePage();
     messagePage->setAddress(addr);
 }
 
-void EmercoinGUI::dragEnterEvent(QDragEnterEvent *event)
+void GongxincoinGUI::dragEnterEvent(QDragEnterEvent *event)
 {
     // Accept only URIs
     if(event->mimeData()->hasUrls())
         event->acceptProposedAction();
 }
 
-void EmercoinGUI::dropEvent(QDropEvent *event)
+void GongxincoinGUI::dropEvent(QDropEvent *event)
 {
     if(event->mimeData()->hasUrls())
     {
@@ -794,7 +794,7 @@ void EmercoinGUI::dropEvent(QDropEvent *event)
     event->acceptProposedAction();
 }
 
-void EmercoinGUI::handleURI(QString strURI)
+void GongxincoinGUI::handleURI(QString strURI)
 {
     gotoSendCoinsPage();
     sendCoinsPage->handleURI(strURI);
@@ -805,7 +805,7 @@ void EmercoinGUI::handleURI(QString strURI)
     showNormalIfMinimized();
 }
 
-void EmercoinGUI::setEncryptionStatus(int status)
+void GongxincoinGUI::setEncryptionStatus(int status)
 {
     switch(status)
     {
@@ -834,7 +834,7 @@ void EmercoinGUI::setEncryptionStatus(int status)
     }
 }
 
-void EmercoinGUI::encryptWallet(bool status)
+void GongxincoinGUI::encryptWallet(bool status)
 {
     if(!walletModel)
         return;
@@ -846,7 +846,7 @@ void EmercoinGUI::encryptWallet(bool status)
     setEncryptionStatus(walletModel->getEncryptionStatus());
 }
 
-void EmercoinGUI::backupWallet()
+void GongxincoinGUI::backupWallet()
 {
     QString saveDir = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation);
     QString filename = QFileDialog::getSaveFileName(this, tr("Backup Wallet"), saveDir, tr("Wallet Data (*.dat)"));
@@ -857,14 +857,14 @@ void EmercoinGUI::backupWallet()
     }
 }
 
-void EmercoinGUI::changePassphrase()
+void GongxincoinGUI::changePassphrase()
 {
     AskPassphraseDialog dlg(AskPassphraseDialog::ChangePass, this);
     dlg.setModel(walletModel);
     dlg.exec();
 }
 
-void EmercoinGUI::unlockWallet()
+void GongxincoinGUI::unlockWallet()
 {
     if(!walletModel)
         return;
@@ -877,7 +877,7 @@ void EmercoinGUI::unlockWallet()
     }
 }
 
-void EmercoinGUI::showNormalIfMinimized()
+void GongxincoinGUI::showNormalIfMinimized()
 {
     if(!isVisible()) // Show, if hidden
         show();
@@ -886,7 +886,7 @@ void EmercoinGUI::showNormalIfMinimized()
 }
 
 
-void EmercoinGUI::on_labelEncryptionIcon_clicked()
+void GongxincoinGUI::on_labelEncryptionIcon_clicked()
 {
     if (!walletModel)
         return;

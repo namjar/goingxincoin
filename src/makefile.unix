@@ -114,10 +114,10 @@ OBJS= \
     obj/kernel.o \
     obj/stun.o \
     obj/namecoin.o \
-    obj/emcdns.o \
+    obj/gxcdns.o \
     obj/checkpoints_eb.o
 
-all: emercoind
+all: gongxincoind
 
 # auto-generated dependencies:
 -include obj/*.P
@@ -135,7 +135,7 @@ obj/%.o: %.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-emercoind: $(OBJS:obj/%=obj/%)
+gongxincoind: $(OBJS:obj/%=obj/%)
 	$(CXX) $(xCXXFLAGS) -rdynamic -o $@ $^ $(LDFLAGS) $(LIBS)
 
 TESTOBJS := $(patsubst test/%.cpp,obj-test/%.o,$(wildcard test/*.cpp))
@@ -147,11 +147,11 @@ obj-test/%.o: test/%.cpp
 	      -e '/^$$/ d' -e 's/$$/ :/' < $(@:%.o=%.d) >> $(@:%.o=%.P); \
 	  rm -f $(@:%.o=%.d)
 
-test_emercoin: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
+test_gongxincoin: $(TESTOBJS) $(filter-out obj/init.o,$(OBJS:obj/%=obj/%))
 	$(CXX) $(xCXXFLAGS) -o $@ $(LIBPATHS) $^ -Wl,-B$(LMODE) -lboost_unit_test_framework $(LDFLAGS) $(LIBS)
 
 clean:
-	-rm -f emercoind test_emercoin
+	-rm -f gongxincoind test_gongxincoin
 	-rm -f obj/*.o
 	-rm -f obj-test/*.o
 	-rm -f obj/*.P

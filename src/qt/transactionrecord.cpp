@@ -67,7 +67,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                     }
                     else if (ExtractDestination(txout.scriptPubKey, address) && IsMine(*wallet, address))
                     {
-                        // Received by Emercoin Address
+                        // Received by Gongxincoin Address
                         sub.type = TransactionRecord::RecvWithAddress;
                         sub.address = CBitcoinAddress(address).ToString();
                     }
@@ -143,7 +143,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                     string address2; // for namecoin use
                     if (ExtractDestination(txout.scriptPubKey, address))
                     {
-                        // Sent to Emercoin Address
+                        // Sent to Gongxincoin Address
                         sub.type = TransactionRecord::SendToAddress;
                         sub.address = CBitcoinAddress(address).ToString();
                     }

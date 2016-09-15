@@ -4,13 +4,13 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="14"/>
-        <source>About Emercoin</source>
-        <translation>О Emercoin</translation>
+        <source>About Gongxincoin</source>
+        <translation>О Gongxincoin</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="53"/>
-        <source>&lt;b&gt;Emercoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Emercoin&lt;/b&gt; версия</translation>
+        <source>&lt;b&gt;Gongxincoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Gongxincoin&lt;/b&gt; версия</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="85"/>
@@ -39,7 +39,7 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="20"/>
-        <source>These are your Emercoin addresses for receiving payments.  You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <source>These are your Gongxincoin addresses for receiving payments.  You may want to give a different one to each sender so you can keep track of who is paying you.</source>
         <translation>Здесь перечислены Ваши адреса для получения платежей.  Вы можете использовать их для того, чтобы давать разным людям разные адреса и таким образом иметь возможность отслеживать кто и сколько Вам платил, а так же поддерживать бо́льшую анонимность..</translation>
     </message>
     <message>
@@ -239,7 +239,7 @@ Are you sure you wish to encrypt your wallet?</source>
     </message>
     <message>
         <location filename="../askpassphrasedialog.cpp" line="112"/>
-        <source>Emercoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your emercoins from being stolen by malware infecting your computer.</source>
+        <source>Gongxincoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your gongxincoins from being stolen by malware infecting your computer.</source>
         <translation>Сейчас программа закроется для завершения процесса шифрования. Помните, что шифрование вашего бумажника не может полностью защитить ваши биткоины от кражи с помощью инфицирования вашего компьютера вредоносным ПО.</translation>
     </message>
     <message>
@@ -291,11 +291,11 @@ Are you sure you wish to encrypt your wallet?</source>
     </message>
 </context>
 <context>
-    <name>EmercoinGUI</name>
+    <name>GongxincoinGUI</name>
     <message>
         <location filename="../bitcoingui.cpp" line="69"/>
-        <source>Emercoin Wallet</source>
-        <translation>Emercoin-бумажник</translation>
+        <source>Gongxincoin Wallet</source>
+        <translation>Gongxincoin-бумажник</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="142"/>
@@ -355,7 +355,7 @@ Are you sure you wish to encrypt your wallet?</source>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="201"/>
-        <source>Send coins to a emercoin address</source>
+        <source>Send coins to a gongxincoin address</source>
         <translation>Отправить монеты на указанный адрес</translation>
     </message>
     <message>
@@ -385,8 +385,8 @@ Are you sure you wish to encrypt your wallet?</source>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="231"/>
-        <source>Show information about Emercoin</source>
-        <translation>Показать информацию о Emercoin&apos;е</translation>
+        <source>Show information about Gongxincoin</source>
+        <translation>Показать информацию о Gongxincoin&apos;е</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="233"/>
@@ -405,17 +405,17 @@ Are you sure you wish to encrypt your wallet?</source>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="237"/>
-        <source>Modify configuration options for emercoin</source>
+        <source>Modify configuration options for gongxincoin</source>
         <translation>Изменить настройки</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="239"/>
-        <source>Open &amp;Emercoin</source>
+        <source>Open &amp;Gongxincoin</source>
         <translation>&amp;Показать бумажник</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="240"/>
-        <source>Show the Emercoin window</source>
+        <source>Show the Gongxincoin window</source>
         <translation>Показать окно бумажника</translation>
     </message>
     <message>
@@ -490,12 +490,12 @@ Are you sure you wish to encrypt your wallet?</source>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="407"/>
-        <source>emercoin-qt</source>
-        <translation>emercoin-qt</translation>
+        <source>gongxincoin-qt</source>
+        <translation>gongxincoin-qt</translation>
     </message>
     <message numerus="yes">
         <location filename="../bitcoingui.cpp" line="449"/>
-        <source>%n active connection(s) to Emercoin network</source>
+        <source>%n active connection(s) to Gongxincoin network</source>
         <translation><numerusform>%n активное соединение с сетью</numerusform><numerusform>%n активных соединений с сетью</numerusform><numerusform>%n активных соединений с сетью</numerusform></translation>
     </message>
     <message>
@@ -679,8 +679,8 @@ Address: %4
     </message>
     <message>
         <location filename="../editaddressdialog.cpp" line="96"/>
-        <source>The entered address &quot;%1&quot; is not a valid emercoin address.</source>
-        <translation>Введённый адрес «%1» не является правильным Emercoin-адресом.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid gongxincoin address.</source>
+        <translation>Введённый адрес «%1» не является правильным Gongxincoin-адресом.</translation>
     </message>
     <message>
         <location filename="../editaddressdialog.cpp" line="101"/>
@@ -697,12 +697,12 @@ Address: %4
     <name>MainOptionsPage</name>
     <message>
         <location filename="../optionsdialog.cpp" line="170"/>
-        <source>&amp;Start Emercoin on window system startup</source>
+        <source>&amp;Start Gongxincoin on window system startup</source>
         <translation>&amp;Запускать бумажник при входе в систему</translation>
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="171"/>
-        <source>Automatically start Emercoin after the computer is turned on</source>
+        <source>Automatically start Gongxincoin after the computer is turned on</source>
         <translation>Автоматически запускать бумажник, когда включается компьютер</translation>
     </message>
     <message>
@@ -722,8 +722,8 @@ Address: %4
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="181"/>
-        <source>Automatically open the Emercoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Автоматически открыть порт для Emercoin-клиента на роутере. Работает ТОЛЬКО если Ваш роутер поддерживает UPnP и данная функция включена.</translation>
+        <source>Automatically open the Gongxincoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Автоматически открыть порт для Gongxincoin-клиента на роутере. Работает ТОЛЬКО если Ваш роутер поддерживает UPnP и данная функция включена.</translation>
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="185"/>
@@ -743,7 +743,7 @@ Address: %4
     <message>
         <location filename="../optionsdialog.cpp" line="191"/>
         <source>Connect to the Bitcon network through a SOCKS4 proxy (e.g. when connecting through Tor)</source>
-        <translation>Подключаться к сети Emercoin через SOCKS4 прокси (например, при использовании Tor)</translation>
+        <translation>Подключаться к сети Gongxincoin через SOCKS4 прокси (например, при использовании Tor)</translation>
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="196"/>
@@ -1183,8 +1183,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="25"/>
-        <source>Enter a Emercoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation>Введите Emercoin-адрес (например 1LA5FtQhnnWnkK6zjFfutR7Stiit4wKd63)</translation>
+        <source>Enter a Gongxincoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Введите Gongxincoin-адрес (например 1LA5FtQhnnWnkK6zjFfutR7Stiit4wKd63)</translation>
     </message>
 </context>
 <context>
@@ -1632,10 +1632,10 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>emercoin-core</name>
+    <name>gongxincoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="3"/>
-        <source>Emercoin version</source>
+        <source>Gongxincoin version</source>
         <translation>Версия</translation>
     </message>
     <message>
@@ -1645,8 +1645,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="5"/>
-        <source>Send command to -server or emercoind</source>
-        <translation>Отправить команду на -server или emercoind</translation>
+        <source>Send command to -server or gongxincoind</source>
+        <translation>Отправить команду на -server или gongxincoind</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="6"/>
@@ -1666,13 +1666,13 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="9"/>
-        <source>Specify configuration file (default: emercoin.conf)</source>
-        <translation>Указать конфигурационный файл (по умолчанию: emercoin.conf)</translation>
+        <source>Specify configuration file (default: gongxincoin.conf)</source>
+        <translation>Указать конфигурационный файл (по умолчанию: gongxincoin.conf)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="10"/>
-        <source>Specify pid file (default: emercoind.pid)</source>
-        <translation>Указать pid-файл (по умолчанию: emercoin.pid)</translation>
+        <source>Specify pid file (default: gongxincoind.pid)</source>
+        <translation>Указать pid-файл (по умолчанию: gongxincoin.pid)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="11"/>
@@ -1847,9 +1847,9 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../bitcoinstrings.cpp" line="47"/>
         <source>
-SSL options: (see the Emercoin Wiki for SSL setup instructions)</source>
+SSL options: (see the Gongxincoin Wiki for SSL setup instructions)</source>
         <translation>
-Параметры SSL: (см. Emercoin Wiki для инструкций по настройке SSL)</translation>
+Параметры SSL: (см. Gongxincoin Wiki для инструкций по настройке SSL)</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="50"/>
@@ -1878,7 +1878,7 @@ SSL options: (see the Emercoin Wiki for SSL setup instructions)</source>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="57"/>
-        <source>Cannot obtain a lock on data directory %s.  Emercoin is probably already running.</source>
+        <source>Cannot obtain a lock on data directory %s.  Gongxincoin is probably already running.</source>
         <translation>Невозможно установить блокировку на рабочую директорию %s.  Возможно, бумажник уже запущен.</translation>
     </message>
     <message>
@@ -1903,13 +1903,13 @@ SSL options: (see the Emercoin Wiki for SSL setup instructions)</source>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="66"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Emercoin</source>
-        <translation>Ошибка загрузки wallet.dat: бумажник требует более новую версию Emercoin</translation>
+        <source>Error loading wallet.dat: Wallet requires newer version of Gongxincoin</source>
+        <translation>Ошибка загрузки wallet.dat: бумажник требует более новую версию Gongxincoin</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="67"/>
-        <source>Wallet needed to be rewritten: restart Emercoin to complete</source>
-        <translation>Необходимо перезаписать бумажник, перезапустите Emercoin для завершения операции.</translation>
+        <source>Wallet needed to be rewritten: restart Gongxincoin to complete</source>
+        <translation>Необходимо перезаписать бумажник, перезапустите Gongxincoin для завершения операции.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="68"/>
@@ -1963,13 +1963,13 @@ SSL options: (see the Emercoin Wiki for SSL setup instructions)</source>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="78"/>
-        <source>Unable to bind to port %d on this computer.  Emercoin is probably already running.</source>
+        <source>Unable to bind to port %d on this computer.  Gongxincoin is probably already running.</source>
         <translation>Невозможно забиндить порт %d на данном компьютере.  Возможно, бумажник ужк запущен.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="81"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct.  If your clock is wrong Emercoin will not work properly.</source>
-        <translation>ВНИМАНИЕ: Проверьте дату и время, установленные на Вашем компьютере. Если Ваши часы идут не правильно Emercoin может наботать не корректно.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct.  If your clock is wrong Gongxincoin will not work properly.</source>
+        <translation>ВНИМАНИЕ: Проверьте дату и время, установленные на Вашем компьютере. Если Ваши часы идут не правильно Gongxincoin может наботать не корректно.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="84"/>

@@ -21,7 +21,7 @@ public:
     qint64 amount;
 };
 
-/** Interface to Emercoin wallet from Qt view code. */
+/** Interface to Gongxincoin wallet from Qt view code. */
 class WalletModel : public QObject
 {
     Q_OBJECT

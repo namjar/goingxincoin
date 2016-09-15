@@ -3,7 +3,7 @@
 
 #include <QLabel>
 
-// emercoin : to ensure that we can click on lock icon in GUI
+// gongxincoin : to ensure that we can click on lock icon in GUI
 
 class ClickableLockLabel : public QLabel
 {

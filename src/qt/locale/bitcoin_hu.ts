@@ -4,13 +4,13 @@
     <name>AboutDialog</name>
     <message>
         <location filename="../forms/aboutdialog.ui" line="14"/>
-        <source>About Emercoin</source>
-        <translation>A Emercoinról</translation>
+        <source>About Gongxincoin</source>
+        <translation>A Gongxincoinról</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="53"/>
-        <source>&lt;b&gt;Emercoin&lt;/b&gt; version</source>
-        <translation>&lt;b&gt;Emercoin&lt;/b&gt; verzió</translation>
+        <source>&lt;b&gt;Gongxincoin&lt;/b&gt; version</source>
+        <translation>&lt;b&gt;Gongxincoin&lt;/b&gt; verzió</translation>
     </message>
     <message>
         <location filename="../forms/aboutdialog.ui" line="85"/>
@@ -33,8 +33,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="20"/>
-        <source>These are your Emercoin addresses for receiving payments.  You may want to give a different one to each sender so you can keep track of who is paying you.</source>
-        <translation>Ezekkel a Emercoin-címekkel fogadhatod kifizetéseket.   Érdemes lehet minden egyes kifizető számára külön címet létrehozni, hogy könnyebben nyomon követhesd, kitől kaptál már pénzt.</translation>
+        <source>These are your Gongxincoin addresses for receiving payments.  You may want to give a different one to each sender so you can keep track of who is paying you.</source>
+        <translation>Ezekkel a Gongxincoin-címekkel fogadhatod kifizetéseket.   Érdemes lehet minden egyes kifizető számára külön címet létrehozni, hogy könnyebben nyomon követhesd, kitől kaptál már pénzt.</translation>
     </message>
     <message>
         <location filename="../forms/addressbookpage.ui" line="33"/>
@@ -233,7 +233,7 @@ Biztosan kódolni akarod a tárcát?</translation>
     </message>
     <message>
         <location filename="../askpassphrasedialog.cpp" line="112"/>
-        <source>Emercoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your emercoins from being stolen by malware infecting your computer.</source>
+        <source>Gongxincoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your gongxincoins from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -285,11 +285,11 @@ Biztosan kódolni akarod a tárcát?</translation>
     </message>
 </context>
 <context>
-    <name>EmercoinGUI</name>
+    <name>GongxincoinGUI</name>
     <message>
         <location filename="../bitcoingui.cpp" line="69"/>
-        <source>Emercoin Wallet</source>
-        <translation>Emercoin-tárca</translation>
+        <source>Gongxincoin Wallet</source>
+        <translation>Gongxincoin-tárca</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="142"/>
@@ -349,7 +349,7 @@ Biztosan kódolni akarod a tárcát?</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="201"/>
-        <source>Send coins to a emercoin address</source>
+        <source>Send coins to a gongxincoin address</source>
         <translation>Érmék küldése megadott címre</translation>
     </message>
     <message>
@@ -379,8 +379,8 @@ Biztosan kódolni akarod a tárcát?</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="231"/>
-        <source>Show information about Emercoin</source>
-        <translation>Információk a Emercoinról</translation>
+        <source>Show information about Gongxincoin</source>
+        <translation>Információk a Gongxincoinról</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="233"/>
@@ -399,18 +399,18 @@ Biztosan kódolni akarod a tárcát?</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="237"/>
-        <source>Modify configuration options for emercoin</source>
-        <translation>Emercoin konfigurációs opciók</translation>
+        <source>Modify configuration options for gongxincoin</source>
+        <translation>Gongxincoin konfigurációs opciók</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="239"/>
-        <source>Open &amp;Emercoin</source>
-        <translation>A &amp;Emercoin megnyitása</translation>
+        <source>Open &amp;Gongxincoin</source>
+        <translation>A &amp;Gongxincoin megnyitása</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="240"/>
-        <source>Show the Emercoin window</source>
-        <translation>A Emercoin-ablak mutatása</translation>
+        <source>Show the Gongxincoin window</source>
+        <translation>A Gongxincoin-ablak mutatása</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="241"/>
@@ -484,13 +484,13 @@ Biztosan kódolni akarod a tárcát?</translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="407"/>
-        <source>emercoin-qt</source>
-        <translation>emercoin-qt</translation>
+        <source>gongxincoin-qt</source>
+        <translation>gongxincoin-qt</translation>
     </message>
     <message numerus="yes">
         <location filename="../bitcoingui.cpp" line="449"/>
-        <source>%n active connection(s) to Emercoin network</source>
-        <translation><numerusform>%n aktív kapcsolat a Emercoin-hálózattal</numerusform><numerusform>%n aktív kapcsolat a Emercoin-hálózattal</numerusform></translation>
+        <source>%n active connection(s) to Gongxincoin network</source>
+        <translation><numerusform>%n aktív kapcsolat a Gongxincoin-hálózattal</numerusform><numerusform>%n aktív kapcsolat a Gongxincoin-hálózattal</numerusform></translation>
     </message>
     <message>
         <location filename="../bitcoingui.cpp" line="475"/>
@@ -673,8 +673,8 @@ Cím: %4
     </message>
     <message>
         <location filename="../editaddressdialog.cpp" line="96"/>
-        <source>The entered address &quot;%1&quot; is not a valid emercoin address.</source>
-        <translation>A megadott &quot;%1&quot; cím nem egy érvényes Emercoin-cím.</translation>
+        <source>The entered address &quot;%1&quot; is not a valid gongxincoin address.</source>
+        <translation>A megadott &quot;%1&quot; cím nem egy érvényes Gongxincoin-cím.</translation>
     </message>
     <message>
         <location filename="../editaddressdialog.cpp" line="101"/>
@@ -691,13 +691,13 @@ Cím: %4
     <name>MainOptionsPage</name>
     <message>
         <location filename="../optionsdialog.cpp" line="170"/>
-        <source>&amp;Start Emercoin on window system startup</source>
+        <source>&amp;Start Gongxincoin on window system startup</source>
         <translation>&amp;Induljon el a számítógép bekapcsolásakor</translation>
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="171"/>
-        <source>Automatically start Emercoin after the computer is turned on</source>
-        <translation>Induljon el a Emercoin a számítógép bekapcsolásakor</translation>
+        <source>Automatically start Gongxincoin after the computer is turned on</source>
+        <translation>Induljon el a Gongxincoin a számítógép bekapcsolásakor</translation>
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="175"/>
@@ -716,8 +716,8 @@ Cím: %4
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="181"/>
-        <source>Automatically open the Emercoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>A Emercoin-kliens portjának automatikus megnyitása a routeren. Ez csak akkor működik, ha a routered támogatja az UPnP-t és az engedélyezve is van rajta.</translation>
+        <source>Automatically open the Gongxincoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>A Gongxincoin-kliens portjának automatikus megnyitása a routeren. Ez csak akkor működik, ha a routered támogatja az UPnP-t és az engedélyezve is van rajta.</translation>
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="185"/>
@@ -737,7 +737,7 @@ Cím: %4
     <message>
         <location filename="../optionsdialog.cpp" line="191"/>
         <source>Connect to the Bitcon network through a SOCKS4 proxy (e.g. when connecting through Tor)</source>
-        <translation>SOCKS4 proxyn keresztüli csatlakozás a Emercoin hálózatához (pl. Tor-on keresztüli csatlakozás esetén)</translation>
+        <translation>SOCKS4 proxyn keresztüli csatlakozás a Gongxincoin hálózatához (pl. Tor-on keresztüli csatlakozás esetén)</translation>
     </message>
     <message>
         <location filename="../optionsdialog.cpp" line="196"/>
@@ -1094,7 +1094,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../sendcoinsdialog.cpp" line="133"/>
         <source>Amount exceeds your balance</source>
-        <translation>Nincs ennyi emercoin az egyenlegeden.</translation>
+        <translation>Nincs ennyi gongxincoin az egyenlegeden.</translation>
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="138"/>
@@ -1178,8 +1178,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="25"/>
-        <source>Enter a Emercoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
-        <translation>Adj meg egy Emercoin-címet (pl.: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L )</translation>
+        <source>Enter a Gongxincoin address (e.g. 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L)</source>
+        <translation>Adj meg egy Gongxincoin-címet (pl.: 1NS17iag9jJgTHD1VXjvLCEnZuQ3rJDE9L )</translation>
     </message>
 </context>
 <context>
@@ -1627,11 +1627,11 @@ p, li { white-space: pre-wrap; }
     </message>
 </context>
 <context>
-    <name>emercoin-core</name>
+    <name>gongxincoin-core</name>
     <message>
         <location filename="../bitcoinstrings.cpp" line="3"/>
-        <source>Emercoin version</source>
-        <translation>Emercoin verzió</translation>
+        <source>Gongxincoin version</source>
+        <translation>Gongxincoin verzió</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="4"/>
@@ -1640,8 +1640,8 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="5"/>
-        <source>Send command to -server or emercoind</source>
-        <translation>Parancs küldése a -serverhez vagy a emercoindhez
+        <source>Send command to -server or gongxincoind</source>
+        <translation>Parancs küldése a -serverhez vagy a gongxincoindhez
 </translation>
     </message>
     <message>
@@ -1664,14 +1664,14 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="9"/>
-        <source>Specify configuration file (default: emercoin.conf)</source>
-        <translation>Konfigurációs fájl (alapértelmezett: emercoin.conf)
+        <source>Specify configuration file (default: gongxincoin.conf)</source>
+        <translation>Konfigurációs fájl (alapértelmezett: gongxincoin.conf)
 </translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="10"/>
-        <source>Specify pid file (default: emercoind.pid)</source>
-        <translation>pid-fájl (alapértelmezett: emercoind.pid)
+        <source>Specify pid file (default: gongxincoind.pid)</source>
+        <translation>pid-fájl (alapértelmezett: gongxincoind.pid)
 </translation>
     </message>
     <message>
@@ -1683,7 +1683,7 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../bitcoinstrings.cpp" line="12"/>
         <source>Don&apos;t generate coins</source>
-        <translation>Emercoin-generálás leállítása
+        <translation>Gongxincoin-generálás leállítása
 </translation>
     </message>
     <message>
@@ -1869,9 +1869,9 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../bitcoinstrings.cpp" line="47"/>
         <source>
-SSL options: (see the Emercoin Wiki for SSL setup instructions)</source>
+SSL options: (see the Gongxincoin Wiki for SSL setup instructions)</source>
         <translation>
-SSL-opciók: (lásd a Emercoin Wiki SSL-beállítási instrukcióit)
+SSL-opciók: (lásd a Gongxincoin Wiki SSL-beállítási instrukcióit)
 </translation>
     </message>
     <message>
@@ -1906,8 +1906,8 @@ SSL-opciók: (lásd a Emercoin Wiki SSL-beállítási instrukcióit)
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="57"/>
-        <source>Cannot obtain a lock on data directory %s.  Emercoin is probably already running.</source>
-        <translation>Az %s adatkönyvtár nem zárható.  A Emercoin valószínűleg fut már.</translation>
+        <source>Cannot obtain a lock on data directory %s.  Gongxincoin is probably already running.</source>
+        <translation>Az %s adatkönyvtár nem zárható.  A Gongxincoin valószínűleg fut már.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="60"/>
@@ -1931,12 +1931,12 @@ SSL-opciók: (lásd a Emercoin Wiki SSL-beállítási instrukcióit)
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="66"/>
-        <source>Error loading wallet.dat: Wallet requires newer version of Emercoin</source>
+        <source>Error loading wallet.dat: Wallet requires newer version of Gongxincoin</source>
         <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="67"/>
-        <source>Wallet needed to be rewritten: restart Emercoin to complete</source>
+        <source>Wallet needed to be rewritten: restart Gongxincoin to complete</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1991,13 +1991,13 @@ SSL-opciók: (lásd a Emercoin Wiki SSL-beállítási instrukcióit)
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="78"/>
-        <source>Unable to bind to port %d on this computer.  Emercoin is probably already running.</source>
-        <translation>A %d port nem elérhető ezen a gépen.  A Emercoin valószínűleg fut már.</translation>
+        <source>Unable to bind to port %d on this computer.  Gongxincoin is probably already running.</source>
+        <translation>A %d port nem elérhető ezen a gépen.  A Gongxincoin valószínűleg fut már.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="81"/>
-        <source>Warning: Please check that your computer&apos;s date and time are correct.  If your clock is wrong Emercoin will not work properly.</source>
-        <translation>Figyelem: Ellenőrizd, hogy helyesen van-e beállítva a gépeden a dátum és az idő.  A Emercoin nem fog megfelelően működni, ha rosszul van beállítvaaz órád.</translation>
+        <source>Warning: Please check that your computer&apos;s date and time are correct.  If your clock is wrong Gongxincoin will not work properly.</source>
+        <translation>Figyelem: Ellenőrizd, hogy helyesen van-e beállítva a gépeden a dátum és az idő.  A Gongxincoin nem fog megfelelően működni, ha rosszul van beállítvaaz órád.</translation>
     </message>
     <message>
         <location filename="../bitcoinstrings.cpp" line="84"/>

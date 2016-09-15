@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2011-2013 The PPCoin developers
-// Copyright (c) 2013-2014 The EmerCoin developers
+// Copyright (c) 2013-2014 The GongxinCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -369,7 +369,7 @@ namespace Checkpoints
     }
 }
 
-// emercoin: sync-checkpoint master key
+// gongxincoin: sync-checkpoint master key
 const std::string CSyncCheckpoint::strMasterPubKey = "046fbfdd8aac1671681dfe257a65cb1a87056814955ae1faeefa20c158a66ad5514c77f858a417da79f56c69e97ece8c5363dbd41994db22435596f84a002736b0";
 std::string CSyncCheckpoint::strMasterPrivKey = "";
 

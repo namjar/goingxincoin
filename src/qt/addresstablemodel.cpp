@@ -235,7 +235,7 @@ QModelIndex AddressTableModel::index(int row, int column, const QModelIndex & pa
 
 void AddressTableModel::update()
 {
-    // Update address book model from Emercoin core
+    // Update address book model from Gongxincoin core
     beginResetModel();
     priv->refreshAddressTable();
     endResetModel();

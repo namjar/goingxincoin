@@ -4,7 +4,7 @@
 #include <QString>
 #include <QAbstractListModel>
 
-/** Emercoin unit definitions. Encapsulates parsing and formatting
+/** Gongxincoin unit definitions. Encapsulates parsing and formatting
    and serves as list model for dropdown selection boxes.
 */
 class BitcoinUnits: public QAbstractListModel
@@ -12,7 +12,7 @@ class BitcoinUnits: public QAbstractListModel
 public:
     explicit BitcoinUnits(QObject *parent);
 
-    /** Emercoin units.
+    /** Gongxincoin units.
       @note Source: https://en.bitcoin.it/wiki/Units . Please add only sensible ones
      */
     enum Unit

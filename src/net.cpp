@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2011-2013 The PPCoin developers
-// Copyright (c) 2013-2014 The EmerCoin developers
+// Copyright (c) 2013-2014 The GongxinCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -901,7 +901,7 @@ void ThreadMapPort2(void* parg)
             }
         }
 
-        string strDesc = "EmerCoin " + FormatFullVersion();
+        string strDesc = "GongxinCoin " + FormatFullVersion();
 #ifndef UPNPDISCOVER_SUCCESS
         /* miniupnpc 1.5 */
         r = UPNP_AddPortMapping(urls.controlURL, data.first.servicetype,
@@ -992,11 +992,11 @@ void MapPort(bool /* unused fMapPort */)
 // Each pair gives a source name and a seed name.
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
-// testnet dns seed begins with 't', all else are emercoin dns seeds.
+// testnet dns seed begins with 't', all else are gongxincoin dns seeds.
 static const char *strDNSSeed[][2] = {
-    {"seed"  , "seed.emercoin.com"},
-    {"emcdns", "seed.emc"},
-    {"tnseed", "tnseed.emercoin.com"},
+    {"seed"  , "seed.gongxincoin.com"},
+    {"gxcdns", "seed.gxc"},
+    {"tnseed", "tnseed.gongxincoin.com"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
@@ -1520,7 +1520,7 @@ bool BindListenPort(string& strError)
     {
         int nErr = WSAGetLastError();
         if (nErr == WSAEADDRINUSE)
-            strError = strprintf(_("Unable to bind to port %d on this computer.  EmerCoin is probably already running."), ntohs(sockaddr.sin_port));
+            strError = strprintf(_("Unable to bind to port %d on this computer.  GongxinCoin is probably already running."), ntohs(sockaddr.sin_port));
         else
             strError = strprintf("Error: Unable to bind to port %d on this computer (bind returned error %d)", ntohs(sockaddr.sin_port), nErr);
         printf("%s\n", strError.c_str());

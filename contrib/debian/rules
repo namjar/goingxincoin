@@ -1,33 +1,33 @@
 #!/usr/bin/make -f
 # -*- mode: makefile; coding: utf-8 -*-
 
-#DEB_MAKE_CHECK_TARGET = test_emercoin
-#build/emercoind::
-#	$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),,src/test_emercoin)
+#DEB_MAKE_CHECK_TARGET = test_gongxincoin
+#build/gongxincoind::
+#	$(if $(filter nocheck,$(DEB_BUILD_OPTIONS)),,src/test_gongxincoin)
 
-DEB_INSTALL_EXAMPLES_emercoind += debian/examples/*
-DEB_INSTALL_MANPAGES_emercoind += debian/manpages/*
+DEB_INSTALL_EXAMPLES_gongxincoind += debian/examples/*
+DEB_INSTALL_MANPAGES_gongxincoind += debian/manpages/*
 
 %:
 	dh $@
 
 override_dh_auto_build:
-	cd src; $(MAKE) -f makefile.unix emercoind
+	cd src; $(MAKE) -f makefile.unix gongxincoind
 	$(MAKE)
 
 override_dh_auto_clean:
-	if [ -f Makefile ]; then $(MAKE) clean; else rm -rf build/; rm -f emercoin-qt; fi
+	if [ -f Makefile ]; then $(MAKE) clean; else rm -rf build/; rm -f gongxincoin-qt; fi
 	cd src; $(MAKE) -f makefile.unix clean
 
 override_dh_auto_configure:
-	qmake emercoin-qt.pro USE_QRCODE=1
+	qmake gongxincoin-qt.pro USE_QRCODE=1
 
 override_dh_auto_test:
-	cd src; $(MAKE) -f makefile.unix test_emercoin
-	src/test_emercoin
+	cd src; $(MAKE) -f makefile.unix test_gongxincoin
+	src/test_gongxincoin
 
 # Ensure wrapper is set executable
-binary-post-install/emercoind:
-	chmod +x $(cdbs_curdestdir)usr/bin/emercoind
-binary-post-install/emercoin-qt:
-	chmod +x $(cdbs_curdestdir)usr/bin/emercoin-qt
+binary-post-install/gongxincoind:
+	chmod +x $(cdbs_curdestdir)usr/bin/gongxincoind
+binary-post-install/gongxincoin-qt:
+	chmod +x $(cdbs_curdestdir)usr/bin/gongxincoin-qt

@@ -60,7 +60,7 @@ void setupAmountWidget(QLineEdit *widget, QWidget *parent)
 
 bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
-    if(uri.scheme() != QString("emercoin"))
+    if(uri.scheme() != QString("gongxincoin"))
         return false;
 
     SendCoinsRecipient rv;
@@ -105,13 +105,13 @@ bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 
 bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
 {
-    // Convert emercoin:// to emercoin:
+    // Convert gongxincoin:// to gongxincoin:
     //
-    //    Cannot handle this later, because emercoin:// will cause Qt to see the part after // as host,
+    //    Cannot handle this later, because gongxincoin:// will cause Qt to see the part after // as host,
     //    which will lowercase it (and thus invalidate the address).
-    if(uri.startsWith("emercoin://"))
+    if(uri.startsWith("gongxincoin://"))
     {
-        uri.replace(0, 11, "emercoin:");
+        uri.replace(0, 11, "gongxincoin:");
     }
     QUrl uriInstance(uri);
     return parseBitcoinURI(uriInstance, out);
@@ -232,10 +232,10 @@ void openDebugLogfile()
 HelpMessageBox::HelpMessageBox(QWidget *parent) :
     QMessageBox(parent)
 {
-    header = tr("Emercoin-Qt") + " " + tr("version") + " " +
+    header = tr("Gongxincoin-Qt") + " " + tr("version") + " " +
         QString::fromStdString(FormatFullVersion()) + "\n\n" +
         tr("Usage:") + "\n" +
-        "  emercoin-qt [" + tr("command-line options") + "]                     " + "\n";
+        "  gongxincoin-qt [" + tr("command-line options") + "]                     " + "\n";
 
     coreOptions = QString::fromStdString(HelpMessage());
 
@@ -244,7 +244,7 @@ HelpMessageBox::HelpMessageBox(QWidget *parent) :
         "  -min                   " + tr("Start minimized") + "\n" +
         "  -splash                " + tr("Show splash screen on startup (default: 1)") + "\n";
 
-    setWindowTitle(tr("Emercoin-Qt"));
+    setWindowTitle(tr("Gongxincoin-Qt"));
     setTextFormat(Qt::PlainText);
     // setMinimumWidth is ignored for QMessageBox so put in non-breaking spaces to make it wider.
     setText(header + QString(QChar(0x2003)).repeated(50));

@@ -14,7 +14,7 @@ class QAbstractItemView;
 QT_END_NAMESPACE
 class SendCoinsRecipient;
 
-/** Utility functions used by the Emercoin Qt UI.
+/** Utility functions used by the Gongxincoin Qt UI.
  */
 namespace GUIUtil
 {
@@ -22,15 +22,15 @@ namespace GUIUtil
     QString dateTimeStr(const QDateTime &datetime);
     QString dateTimeStr(qint64 nTime);
 
-    // Render emercoin addresses in monospace font
+    // Render gongxincoin addresses in monospace font
     QFont bitcoinAddressFont();
 
     // Set up widgets for address and amounts
     void setupAddressWidget(QLineEdit *widget, QWidget *parent);
     void setupAmountWidget(QLineEdit *widget, QWidget *parent);
 
-    // Parse "emercoin:" URI into recipient object, return true on succesful parsing
-    // See Emercoin URI definition discussion here: https://bitcointalk.org/index.php?topic=33490.0
+    // Parse "gongxincoin:" URI into recipient object, return true on succesful parsing
+    // See Gongxincoin URI definition discussion here: https://bitcointalk.org/index.php?topic=33490.0
     bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out);
     bool parseBitcoinURI(QString uri, SendCoinsRecipient *out);
 
@@ -73,7 +73,7 @@ namespace GUIUtil
     // Open debug.log
     void openDebugLogfile();
 
-    /** Help message for Emercoin-Qt, shown with --help. */
+    /** Help message for Gongxincoin-Qt, shown with --help. */
     class HelpMessageBox : public QMessageBox
     {
         Q_OBJECT

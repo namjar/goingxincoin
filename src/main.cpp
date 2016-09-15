@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2011-2013 The PPCoin developers
-// Copyright (c) 2013-2014 The EmerCoin developers
+// Copyright (c) 2013-2014 The GongxinCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -58,7 +58,7 @@ map<uint256, map<uint256, CDataStream*> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "EmerCoin Signed Message:\n";
+const string strMessageMagic = "GongxinCoin Signed Message:\n";
 
 double dHashesPerSec;
 int64 nHPSTimerStart;
@@ -66,7 +66,7 @@ int64 nHPSTimerStart;
 // Settings
 int64 nTransactionFee = MIN_TX_FEE;
 
-CHooks* hooks; //this adds namecoin hooks which allow splicing of code inside standart emercoin functions.
+CHooks* hooks; //this adds namecoin hooks which allow splicing of code inside standart gongxincoin functions.
 
 
 
@@ -2047,7 +2047,7 @@ bool CBlock::AcceptBlock()
     }
     else
     {
-        // this is needed only for emercoin official blockchain, because of mistake we made at the beginning
+        // this is needed only for gongxincoin official blockchain, because of mistake we made at the beginning
         unsigned int check = GetNextTargetRequired(pindexPrev, IsProofOfStake());
         unsigned int max_error = check / 100000;
         if (!(nBits >= check - max_error && nBits <= check + max_error)) // +- 0.001% interval
@@ -2300,7 +2300,7 @@ bool CheckDiskSpace(uint64 nAdditionalBytes)
         string strMessage = _("Warning: Disk space is low");
         strMiscWarning = strMessage;
         printf("*** %s\n", strMessage.c_str());
-        ThreadSafeMessageBox(strMessage, "EmerCoin", wxOK | wxICON_EXCLAMATION | wxMODAL);
+        ThreadSafeMessageBox(strMessage, "GongxinCoin", wxOK | wxICON_EXCLAMATION | wxMODAL);
         StartShutdown();
         return false;
     }
@@ -2361,7 +2361,7 @@ bool LoadBlockIndex(bool fAllowNew)
     }
 
     printf("%s Network: genesis=0x%s nBitsLimit=0x%08x nBitsInitial=0x%08x nStakeMinAge=%d nCoinbaseMaturity=%d nModifierInterval=%d\n",
-           fTestNet? "Test" : "EmerCoin", hashGenesisBlock.ToString().substr(0, 20).c_str(), bnProofOfWorkLimit.GetCompact(), bnInitialHashTarget.GetCompact(), nStakeMinAge, nCoinbaseMaturity, nModifierInterval);
+           fTestNet? "Test" : "GongxinCoin", hashGenesisBlock.ToString().substr(0, 20).c_str(), bnProofOfWorkLimit.GetCompact(), bnInitialHashTarget.GetCompact(), nStakeMinAge, nCoinbaseMaturity, nModifierInterval);
 
     //
     // Load block index

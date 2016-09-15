@@ -167,7 +167,7 @@ void AddressBookPage::on_signMessage_clicked()
     }
 
     QObject *qoGUI = parent()->parent();
-    EmercoinGUI *gui = qobject_cast<EmercoinGUI *>(qoGUI);
+    GongxincoinGUI *gui = qobject_cast<GongxincoinGUI *>(qoGUI);
     if (gui)
         gui->gotoMessagePage(addr);
 }

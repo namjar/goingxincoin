@@ -65,6 +65,6 @@ f.write("""#include <QtGlobal>
 f.write('static const char UNUSED *bitcoin_strings[] = {')
 for (msgid, msgstr) in messages:
     if msgid != EMPTY:
-        f.write('QT_TRANSLATE_NOOP("emercoin-core", %s),\n' % ('\n'.join(msgid)))
+        f.write('QT_TRANSLATE_NOOP("gongxincoin-core", %s),\n' % ('\n'.join(msgid)))
 f.write('};')
 f.close()

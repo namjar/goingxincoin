@@ -31,13 +31,13 @@ fi
 grep -v '^#' $FNAME | gzip -c -9 | openssl enc -aes-256-cbc -salt -out $OUTF -pass pass:$PASSW
 
 echo
-echo "Please, deposit into EmerCoin NVS pair:"
+echo "Please, deposit into GongxinCoin NVS pair:"
 echo "  Key:   info:$INDEX"
 
 echo "  Value: body of the file: $OUTF"
 
 echo
-echo "To link EMCSSL Certificate to this info file, run ./gen_tpl.sh and use"
+echo "To link GXCSSL Certificate to this info file, run ./gen_tpl.sh and use"
 echo " value for UID: info:$INDEX:$PASSW"
 
 # To decode, run something like following:

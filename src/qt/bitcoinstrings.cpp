@@ -5,130 +5,130 @@
 #else
 #define UNUSED
 #endif
-static const char UNUSED *bitcoin_strings[] = {QT_TRANSLATE_NOOP("emercoin-core", ""
-"Unable to bind to port %d on this computer.  Emercoin is probably already "
+static const char UNUSED *bitcoin_strings[] = {QT_TRANSLATE_NOOP("gongxincoin-core", ""
+"Unable to bind to port %d on this computer.  Gongxincoin is probably already "
 "running."),
-QT_TRANSLATE_NOOP("emercoin-core", "Warning: Disk space is low  "),
-QT_TRANSLATE_NOOP("emercoin-core", "Emercoin version"),
-QT_TRANSLATE_NOOP("emercoin-core", "Usage:"),
-QT_TRANSLATE_NOOP("emercoin-core", "Send command to -server or emercoind"),
-QT_TRANSLATE_NOOP("emercoin-core", "List commands"),
-QT_TRANSLATE_NOOP("emercoin-core", "Get help for a command"),
-QT_TRANSLATE_NOOP("emercoin-core", "Options:"),
-QT_TRANSLATE_NOOP("emercoin-core", "Specify configuration file (default: emercoin.conf)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Specify pid file (default: emercoind.pid)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Generate coins"),
-QT_TRANSLATE_NOOP("emercoin-core", "Don't generate coins"),
-QT_TRANSLATE_NOOP("emercoin-core", "Start minimized"),
-QT_TRANSLATE_NOOP("emercoin-core", "Show splash screen on startup (default: 1)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Specify data directory"),
-QT_TRANSLATE_NOOP("emercoin-core", "Set database cache size in megabytes (default: 25)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Set database disk log size in megabytes (default: 100)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Specify connection timeout (in milliseconds)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Connect through socks4 proxy"),
-QT_TRANSLATE_NOOP("emercoin-core", "Allow DNS lookups for addnode and connect"),
-QT_TRANSLATE_NOOP("emercoin-core", "Listen for connections on <port> (default: 6661 or testnet: 6663)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Maintain at most <n> connections to peers (default: 125)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Add a node to connect to and attempt to keep the connection open"),
-QT_TRANSLATE_NOOP("emercoin-core", "Connect only to the specified node"),
-QT_TRANSLATE_NOOP("emercoin-core", "Find peers using internet relay chat (default: 0)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Accept connections from outside (default: 1)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Set language, for example \"de_DE\" (default: system locale)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Find peers using DNS lookup (default: 1)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Threshold for disconnecting misbehaving peers (default: 100)"),
-QT_TRANSLATE_NOOP("emercoin-core", ""
+QT_TRANSLATE_NOOP("gongxincoin-core", "Warning: Disk space is low  "),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Gongxincoin version"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Usage:"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Send command to -server or gongxincoind"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "List commands"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Get help for a command"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Options:"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Specify configuration file (default: gongxincoin.conf)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Specify pid file (default: gongxincoind.pid)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Generate coins"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Don't generate coins"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Start minimized"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Show splash screen on startup (default: 1)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Specify data directory"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Set database cache size in megabytes (default: 25)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Set database disk log size in megabytes (default: 100)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Specify connection timeout (in milliseconds)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Connect through socks4 proxy"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Allow DNS lookups for addnode and connect"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Listen for connections on <port> (default: 6661 or testnet: 6663)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Maintain at most <n> connections to peers (default: 125)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Add a node to connect to and attempt to keep the connection open"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Connect only to the specified node"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Find peers using internet relay chat (default: 0)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Accept connections from outside (default: 1)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Set language, for example \"de_DE\" (default: system locale)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Find peers using DNS lookup (default: 1)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Threshold for disconnecting misbehaving peers (default: 100)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", ""
 "Number of seconds to keep misbehaving peers from reconnecting (default: "
 "86400)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Maximum per-connection receive buffer, <n>*1000 bytes (default: 10000)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Maximum per-connection send buffer, <n>*1000 bytes (default: 10000)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Use Universal Plug and Play to map the listening port (default: 1)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Use Universal Plug and Play to map the listening port (default: 0)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Fee per KB to add to transactions you send"),
-QT_TRANSLATE_NOOP("emercoin-core", "Accept command line and JSON-RPC commands"),
-QT_TRANSLATE_NOOP("emercoin-core", "Run in the background as a daemon and accept commands"),
-QT_TRANSLATE_NOOP("emercoin-core", "Use the test network"),
-QT_TRANSLATE_NOOP("emercoin-core", "Output extra debugging information"),
-QT_TRANSLATE_NOOP("emercoin-core", "Prepend debug output with timestamp"),
-QT_TRANSLATE_NOOP("emercoin-core", "Send trace/debug info to console instead of debug.log file"),
-QT_TRANSLATE_NOOP("emercoin-core", "Send trace/debug info to debugger"),
-QT_TRANSLATE_NOOP("emercoin-core", "Username for JSON-RPC connections"),
-QT_TRANSLATE_NOOP("emercoin-core", "Password for JSON-RPC connections"),
-QT_TRANSLATE_NOOP("emercoin-core", "Listen for JSON-RPC connections on <port> (default: 8332)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Allow JSON-RPC connections from specified IP address"),
-QT_TRANSLATE_NOOP("emercoin-core", "Send commands to node running on <ip> (default: 127.0.0.1)"),
-QT_TRANSLATE_NOOP("emercoin-core", ""
+QT_TRANSLATE_NOOP("gongxincoin-core", "Maximum per-connection receive buffer, <n>*1000 bytes (default: 10000)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Maximum per-connection send buffer, <n>*1000 bytes (default: 10000)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Use Universal Plug and Play to map the listening port (default: 1)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Use Universal Plug and Play to map the listening port (default: 0)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Fee per KB to add to transactions you send"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Accept command line and JSON-RPC commands"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Run in the background as a daemon and accept commands"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Use the test network"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Output extra debugging information"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Prepend debug output with timestamp"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Send trace/debug info to console instead of debug.log file"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Send trace/debug info to debugger"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Username for JSON-RPC connections"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Password for JSON-RPC connections"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Listen for JSON-RPC connections on <port> (default: 8332)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Allow JSON-RPC connections from specified IP address"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Send commands to node running on <ip> (default: 127.0.0.1)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", ""
 "Execute command when the best block changes (%s in cmd is replaced by block "
 "hash)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Upgrade wallet to latest format"),
-QT_TRANSLATE_NOOP("emercoin-core", "Set key pool size to <n> (default: 100)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Rescan the block chain for missing wallet transactions"),
-QT_TRANSLATE_NOOP("emercoin-core", "How many blocks to check at startup (default: 2500, 0 = all)"),
-QT_TRANSLATE_NOOP("emercoin-core", "How thorough the block verification is (0-6, default: 1)"),
-QT_TRANSLATE_NOOP("emercoin-core", ""
+QT_TRANSLATE_NOOP("gongxincoin-core", "Upgrade wallet to latest format"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Set key pool size to <n> (default: 100)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Rescan the block chain for missing wallet transactions"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "How many blocks to check at startup (default: 2500, 0 = all)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "How thorough the block verification is (0-6, default: 1)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", ""
 "\n"
-"SSL options: (see the Emercoin Wiki for SSL setup instructions)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Use OpenSSL (https) for JSON-RPC connections"),
-QT_TRANSLATE_NOOP("emercoin-core", "Server certificate file (default: server.cert)"),
-QT_TRANSLATE_NOOP("emercoin-core", "Server private key (default: server.pem)"),
-QT_TRANSLATE_NOOP("emercoin-core", ""
+"SSL options: (see the Gongxincoin Wiki for SSL setup instructions)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Use OpenSSL (https) for JSON-RPC connections"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Server certificate file (default: server.cert)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Server private key (default: server.pem)"),
+QT_TRANSLATE_NOOP("gongxincoin-core", ""
 "Acceptable ciphers (default: TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!AH:!3DES:"
 "@STRENGTH)"),
-QT_TRANSLATE_NOOP("emercoin-core", "This help message"),
-QT_TRANSLATE_NOOP("emercoin-core", "Usage"),
-QT_TRANSLATE_NOOP("emercoin-core", ""
-"Cannot obtain a lock on data directory %s.  Emercoin is probably already "
+QT_TRANSLATE_NOOP("gongxincoin-core", "This help message"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Usage"),
+QT_TRANSLATE_NOOP("gongxincoin-core", ""
+"Cannot obtain a lock on data directory %s.  Gongxincoin is probably already "
 "running."),
-QT_TRANSLATE_NOOP("emercoin-core", "Emercoin"),
-QT_TRANSLATE_NOOP("emercoin-core", "Loading addresses..."),
-QT_TRANSLATE_NOOP("emercoin-core", "Error loading addr.dat"),
-QT_TRANSLATE_NOOP("emercoin-core", "Loading block index..."),
-QT_TRANSLATE_NOOP("emercoin-core", "Error loading blkindex.dat"),
-QT_TRANSLATE_NOOP("emercoin-core", "Loading wallet..."),
-QT_TRANSLATE_NOOP("emercoin-core", "Error loading wallet.dat: Wallet corrupted"),
-QT_TRANSLATE_NOOP("emercoin-core", "Error loading wallet.dat: Wallet requires newer version of Emercoin"),
-QT_TRANSLATE_NOOP("emercoin-core", "Wallet needed to be rewritten: restart Emercoin to complete"),
-QT_TRANSLATE_NOOP("emercoin-core", "Error loading wallet.dat"),
-QT_TRANSLATE_NOOP("emercoin-core", "Cannot downgrade wallet"),
-QT_TRANSLATE_NOOP("emercoin-core", "Cannot initialize keypool"),
-QT_TRANSLATE_NOOP("emercoin-core", "Cannot write default address"),
-QT_TRANSLATE_NOOP("emercoin-core", "Rescanning..."),
-QT_TRANSLATE_NOOP("emercoin-core", "Done loading"),
-QT_TRANSLATE_NOOP("emercoin-core", "Invalid -proxy address"),
-QT_TRANSLATE_NOOP("emercoin-core", "Invalid amount for -paytxfee=<amount>"),
-QT_TRANSLATE_NOOP("emercoin-core", ""
+QT_TRANSLATE_NOOP("gongxincoin-core", "Gongxincoin"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Loading addresses..."),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Error loading addr.dat"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Loading block index..."),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Error loading blkindex.dat"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Loading wallet..."),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Error loading wallet.dat: Wallet corrupted"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Error loading wallet.dat: Wallet requires newer version of Gongxincoin"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Wallet needed to be rewritten: restart Gongxincoin to complete"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Error loading wallet.dat"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Cannot downgrade wallet"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Cannot initialize keypool"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Cannot write default address"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Rescanning..."),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Done loading"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Invalid -proxy address"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Invalid amount for -paytxfee=<amount>"),
+QT_TRANSLATE_NOOP("gongxincoin-core", ""
 "Warning: -paytxfee is set very high.  This is the transaction fee you will "
 "pay if you send a transaction."),
-QT_TRANSLATE_NOOP("emercoin-core", "Error: CreateThread(StartNode) failed"),
-QT_TRANSLATE_NOOP("emercoin-core", "To use the %s option"),
-QT_TRANSLATE_NOOP("emercoin-core", ""
+QT_TRANSLATE_NOOP("gongxincoin-core", "Error: CreateThread(StartNode) failed"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "To use the %s option"),
+QT_TRANSLATE_NOOP("gongxincoin-core", ""
 "%s, you must set a rpcpassword in the configuration file:\n"
 " %s\n"
 "It is recommended you use the following random password:\n"
-"rpcuser=emercoinrpc\n"
+"rpcuser=gongxincoinrpc\n"
 "rpcpassword=%s\n"
 "(you do not need to remember this password)\n"
 "If the file does not exist, create it with owner-readable-only file "
 "permissions.\n"),
-QT_TRANSLATE_NOOP("emercoin-core", "Error"),
-QT_TRANSLATE_NOOP("emercoin-core", "An error occured while setting up the RPC port %i for listening: %s"),
-QT_TRANSLATE_NOOP("emercoin-core", ""
+QT_TRANSLATE_NOOP("gongxincoin-core", "Error"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "An error occured while setting up the RPC port %i for listening: %s"),
+QT_TRANSLATE_NOOP("gongxincoin-core", ""
 "You must set rpcpassword=<password> in the configuration file:\n"
 "%s\n"
 "If the file does not exist, create it with owner-readable-only file "
 "permissions."),
-QT_TRANSLATE_NOOP("emercoin-core", ""
+QT_TRANSLATE_NOOP("gongxincoin-core", ""
 "Warning: Please check that your computer's date and time are correct.  If "
-"your clock is wrong Emercoin will not work properly."),
-QT_TRANSLATE_NOOP("emercoin-core", "Error: Wallet locked, unable to create transaction  "),
-QT_TRANSLATE_NOOP("emercoin-core", ""
+"your clock is wrong Gongxincoin will not work properly."),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Error: Wallet locked, unable to create transaction  "),
+QT_TRANSLATE_NOOP("gongxincoin-core", ""
 "Error: This transaction requires a transaction fee of at least %s because of "
 "its amount, complexity, or use of recently received funds  "),
-QT_TRANSLATE_NOOP("emercoin-core", "Error: Transaction creation failed  "),
-QT_TRANSLATE_NOOP("emercoin-core", "Sending..."),
-QT_TRANSLATE_NOOP("emercoin-core", ""
+QT_TRANSLATE_NOOP("gongxincoin-core", "Error: Transaction creation failed  "),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Sending..."),
+QT_TRANSLATE_NOOP("gongxincoin-core", ""
 "Error: The transaction was rejected.  This might happen if some of the coins "
 "in your wallet were already spent, such as if you used a copy of wallet.dat "
 "and coins were spent in the copy but not marked as spent here."),
-QT_TRANSLATE_NOOP("emercoin-core", "Invalid amount"),
-QT_TRANSLATE_NOOP("emercoin-core", "Insufficient funds"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Invalid amount"),
+QT_TRANSLATE_NOOP("gongxincoin-core", "Insufficient funds"),
 };

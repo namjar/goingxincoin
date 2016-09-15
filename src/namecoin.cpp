@@ -1476,7 +1476,7 @@ NameTxReturn name_update(const vector<unsigned char> &vchName,
             if (!address.IsValid())
             {
                 ret.err_code = RPC_INVALID_ADDRESS_OR_KEY;
-                ret.err_msg = "emercoin address is invalid";
+                ret.err_msg = "gongxincoin address is invalid";
                 return ret;
             }
             scriptPubKey.SetDestination(address.Get());

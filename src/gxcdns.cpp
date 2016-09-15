@@ -1,5 +1,5 @@
 /*
- * Simple DNS server for EmerCoin project
+ * Simple DNS server for GongxinCoin project
  *
  * Lookup for names like "dns:some-nake" in the local nameindex database.
  * Database is updates from blockchain, and keeps NMC-transactions.
@@ -37,7 +37,7 @@
 
 #include "namecoin.h"
 #include "util.h"
-#include "emcdns.h"
+#include "gxcdns.h"
 #include "hooks.h"
 extern CHooks* hooks;
 
@@ -82,19 +82,19 @@ int inet_pton(int af, const char *src, void *dst)
 
 /*---------------------------------------------------*/
 
-EmcDns::EmcDns() : m_port(0) {
-} // EmcDns::EmcDns
+GxcDns::GxcDns() : m_port(0) {
+} // GxcDns::GxcDns
 
 /*---------------------------------------------------*/
 
-EmcDns::~EmcDns() {
+GxcDns::~GxcDns() {
   Reset(NULL, 0, NULL, NULL, NULL, 0);
-} // EmcDns::~EmcDns
+} // GxcDns::~GxcDns
 
 
 /*---------------------------------------------------*/
 
-int EmcDns::Reset(const char *bind_ip, uint16_t port_no, 
+int GxcDns::Reset(const char *bind_ip, uint16_t port_no, 
   const char *gw_suffix, const char *allowed_suff, const char *local_fname, uint8_t verbose) {
   if(m_port != 0) {
     // reset current object to initial state
@@ -110,13 +110,13 @@ int EmcDns::Reset(const char *bind_ip, uint16_t port_no,
     free(m_dap_ht);
     m_port = 0;
     if(m_verbose > 0)
-	 printf("EmcDns::Reset: Destroyed OK\n");
+	 printf("GxcDns::Reset: Destroyed OK\n");
   }
 
   // Initialize new object here
   if(port_no != 0) { 
     // Set object to a new state
-    memset(this, 0, sizeof(EmcDns)); // Clear previous state
+    memset(this, 0, sizeof(GxcDns)); // Clear previous state
     m_verbose = verbose;
 
     // Create and socket
@@ -136,7 +136,7 @@ int EmcDns::Reset(const char *bind_ip, uint16_t port_no,
     if(bind(m_sockfd, (struct sockaddr *) &m_address,
                      sizeof (struct sockaddr_in)) < 0) {
       char buf[80];
-      sprintf(buf, "EmcDns::Reset: Cannot bind to port %u", port_no);
+      sprintf(buf, "GxcDns::Reset: Cannot bind to port %u", port_no);
       perror(buf);
       closesocket(m_sockfd);
       return -3; // Cannot bind socket
@@ -177,14 +177,14 @@ int EmcDns::Reset(const char *bind_ip, uint16_t port_no,
 	  m_gw_suf_dots++;
 
     // If no memory, DAP inactive - this is not critical problem
-    m_dap_ht  = (allowed_len | m_gw_suf_len)? (DNSAP*)calloc(EMCDNS_DAPSIZE, sizeof(DNSAP)) : NULL; 
+    m_dap_ht  = (allowed_len | m_gw_suf_len)? (DNSAP*)calloc(GXCDNS_DAPSIZE, sizeof(DNSAP)) : NULL; 
     m_daprand = GetRand(0xffffffff) | 1; 
 
     m_value  = (char *)malloc(VAL_SIZE + BUF_SIZE + 2 + 
 	    m_gw_suf_len + allowed_len + local_len + 4);
  
     if(m_value == NULL) {
-      perror("EmcDns::Reset: Cannot allocate buffer");
+      perror("GxcDns::Reset: Cannot allocate buffer");
       closesocket(m_sockfd);
       return -5; // no memory for buffers
     }
@@ -210,7 +210,7 @@ int EmcDns::Reset(const char *bind_ip, uint16_t port_no,
 	  if(p[1] > 040) { // if allowed domain is not empty - save it into ht
 	    step |= 1;
 	    if(m_verbose > 3)
-	      printf("\tEmcDns::Reset: Insert TLD=%s: pos=%u step=%u\n", p + 1, pos, step);
+	      printf("\tGxcDns::Reset: Insert TLD=%s: pos=%u step=%u\n", p + 1, pos, step);
 	    do 
 	      pos += step;
             while(m_ht_offset[pos] != 0);
@@ -241,7 +241,7 @@ int EmcDns::Reset(const char *bind_ip, uint16_t port_no,
         } // while
 	step |= 1;
 	if(m_verbose > 3)
-	  printf("\tEmcDns::Reset: Insert Local:[%s]->[%s] pos=%u step=%u\n", p, p_eq, pos, step);
+	  printf("\tGxcDns::Reset: Insert Local:[%s]->[%s] pos=%u step=%u\n", p, p_eq, pos, step);
 	do 
 	  pos += step;
         while(m_ht_offset[pos] != 0);
@@ -256,7 +256,7 @@ int EmcDns::Reset(const char *bind_ip, uint16_t port_no,
     // Create listener thread
     if (!CreateThread(StatRun, this))
     {
-      perror("EmcDns::Reset: Cannot create thread");
+      perror("GxcDns::Reset: Cannot create thread");
       closesocket(m_sockfd);
       free(m_value);
       return -6; // cannot create inner thread
@@ -264,25 +264,25 @@ int EmcDns::Reset(const char *bind_ip, uint16_t port_no,
 #endif
 
     if(m_verbose > 0)
-	 printf("EmcDns::Reset: Created/Attached: %s:%u; Qty=%u:%u\n", 
+	 printf("GxcDns::Reset: Created/Attached: %s:%u; Qty=%u:%u\n", 
 		 m_address.sin_addr.s_addr == INADDR_ANY? "INADDR_ANY" : bind_ip, 
 		 port_no, m_allowed_qty, local_qty);
   } // if(port_no != 0)
   
   return m_port = port_no;
-} // EmcDns::Reset
+} // GxcDns::Reset
 
 /*---------------------------------------------------*/
 
-void EmcDns::StatRun(void *p) {
-  EmcDns *obj = (EmcDns*)p;
+void GxcDns::StatRun(void *p) {
+  GxcDns *obj = (GxcDns*)p;
   obj->Run();
   ExitThread(0);
-} // EmcDns::StatRun
+} // GxcDns::StatRun
 
 /*---------------------------------------------------*/
-void EmcDns::Run() {
-  if(m_verbose > 2) printf("EmcDns::Run: started\n");
+void GxcDns::Run() {
+  if(m_verbose > 2) printf("GxcDns::Run: started\n");
   for( ; ; ) {
     m_addrLen = sizeof(m_clientAddress);
     m_rcvlen  = recvfrom(m_sockfd, (char *)m_buf, BUF_SIZE, 0,
@@ -304,14 +304,14 @@ void EmcDns::Run() {
     } // dap check
   } // for
 
-  if(m_verbose > 2) printf("EmcDns::Run: Received Exit packet_len=%d\n", m_rcvlen);
+  if(m_verbose > 2) printf("GxcDns::Run: Received Exit packet_len=%d\n", m_rcvlen);
 
-} //  EmcDns::Run
+} //  GxcDns::Run
 
 /*---------------------------------------------------*/
 
-void EmcDns::HandlePacket() {
-  if(m_verbose > 2) printf("EmcDns::HandlePacket: Handle packet_len=%d\n", m_rcvlen);
+void GxcDns::HandlePacket() {
+  if(m_verbose > 2) printf("GxcDns::HandlePacket: Handle packet_len=%d\n", m_rcvlen);
 
   m_hdr = (DNSHeader *)m_buf;
   // Decode input header from network format
@@ -321,12 +321,12 @@ void EmcDns::HandlePacket() {
   m_rcvend = m_snd = m_buf + m_rcvlen;
 
   if(m_verbose > 3) {
-    printf("\tEmcDns::HandlePacket: msgID  : %d\n", m_hdr->msgID);
-    printf("\tEmcDns::HandlePacket: Bits   : %04x\n", m_hdr->Bits);
-    printf("\tEmcDns::HandlePacket: QDCount: %d\n", m_hdr->QDCount);
-    printf("\tEmcDns::HandlePacket: ANCount: %d\n", m_hdr->ANCount);
-    printf("\tEmcDns::HandlePacket: NSCount: %d\n", m_hdr->NSCount);
-    printf("\tEmcDns::HandlePacket: ARCount: %d\n", m_hdr->ARCount);
+    printf("\tGxcDns::HandlePacket: msgID  : %d\n", m_hdr->msgID);
+    printf("\tGxcDns::HandlePacket: Bits   : %04x\n", m_hdr->Bits);
+    printf("\tGxcDns::HandlePacket: QDCount: %d\n", m_hdr->QDCount);
+    printf("\tGxcDns::HandlePacket: ANCount: %d\n", m_hdr->ANCount);
+    printf("\tGxcDns::HandlePacket: NSCount: %d\n", m_hdr->NSCount);
+    printf("\tGxcDns::HandlePacket: ARCount: %d\n", m_hdr->ARCount);
   }
   // Assert following 3 counters and bits are zero
 //*  uint16_t zCount = m_hdr->ANCount | m_hdr->NSCount | m_hdr->ARCount | (m_hdr->Bits & (m_hdr->QR_MASK | m_hdr->TC_MASK));
@@ -385,10 +385,10 @@ void EmcDns::HandlePacket() {
   }
   // Encode output header into network format
   m_hdr->Transcode();
-} // EmcDns::HandlePacket
+} // GxcDns::HandlePacket
 
 /*---------------------------------------------------*/
-uint16_t EmcDns::HandleQuery() {
+uint16_t GxcDns::HandleQuery() {
   // Decode qname
   uint8_t key[BUF_SIZE];				// Key, transformed to dot-separated LC
   uint8_t *key_end = key;
@@ -415,19 +415,19 @@ uint16_t EmcDns::HandleQuery() {
   *--key_end = 0; // Remove last dot, set EOLN
 
   if(m_verbose > 3) 
-    printf("EmcDns::HandleQuery: Translated domain name: [%s]; DomainsQty=%u\n", key, domain_ndx_p - domain_ndx);
+    printf("GxcDns::HandleQuery: Translated domain name: [%s]; DomainsQty=%u\n", key, domain_ndx_p - domain_ndx);
 
   uint16_t qtype  = *m_rcv++; qtype  = (qtype  << 8) + *m_rcv++; 
   uint16_t qclass = *m_rcv++; qclass = (qclass << 8) + *m_rcv++;
 
   if(m_verbose > 0) 
-    printf("EmcDns::HandleQuery: Key=%s QType=%x QClass=%x\n", key, qtype, qclass);
+    printf("GxcDns::HandleQuery: Key=%s QType=%x QClass=%x\n", key, qtype, qclass);
 
   if(qclass != 1)
     return 4; // Not implemented - support INET only
 
   // If thid is puplic gateway, gw-suffix can be specified, like 
-  // emcdnssuffix=.xyz.com
+  // gxcdnssuffix=.xyz.com
   // Followind block cuts this suffix, if exist.
   // If received domain name "xyz.com" only, keyp is empty string
 
@@ -455,7 +455,7 @@ uint16_t EmcDns::HandleQuery() {
   uint8_t *p = key_end;
 
   if(m_verbose > 3) 
-    printf("EmcDns::HandleQuery: After TLD-suffix cut: [%s]\n", key);
+    printf("GxcDns::HandleQuery: After TLD-suffix cut: [%s]\n", key);
 
   while(p > key) {
     uint8_t c = *--p;
@@ -479,7 +479,7 @@ uint16_t EmcDns::HandleQuery() {
     if(m_allowed_qty) { // Activated TLD-filter
       if(*p != '.') {
         if(m_verbose > 3) 
-  	  printf("EmcDns::HandleQuery: TLD-suffix is not specified in given key=%s; return NXDOMAIN\n", p, key);
+  	  printf("GxcDns::HandleQuery: TLD-suffix is not specified in given key=%s; return NXDOMAIN\n", p, key);
 	return 3; // TLD-suffix is not specified, so NXDOMAIN
       } 
       p++; // Set PTR after dot, to the suffix
@@ -487,7 +487,7 @@ uint16_t EmcDns::HandleQuery() {
         pos += step;
         if(m_ht_offset[pos] == 0) {
           if(m_verbose > 3) 
-  	    printf("EmcDns::HandleQuery: TLD-suffix=[.%s] in given key=%s is not allowed; return NXDOMAIN\n", p, key);
+  	    printf("GxcDns::HandleQuery: TLD-suffix=[.%s] in given key=%s is not allowed; return NXDOMAIN\n", p, key);
 	  return 3; // Reached EndOfList, so NXDOMAIN
         } 
       } while(m_ht_offset[pos] < 0 || strcmp((const char *)p, m_allowed_base + m_ht_offset[pos]) != 0);
@@ -549,10 +549,10 @@ uint16_t EmcDns::HandleQuery() {
   } else 
       Answer_ALL(qtype, m_value);
   return 0;
-} // EmcDns::HandleQuery
+} // GxcDns::HandleQuery
 
 /*---------------------------------------------------*/
-int EmcDns::TryMakeref(uint16_t label_ref) {
+int GxcDns::TryMakeref(uint16_t label_ref) {
   char val2[VAL_SIZE];
   char *tokens[MAX_TOK];
   int ttlqty = Tokenize("TTL", NULL, tokens, strcpy(val2, m_value));
@@ -563,12 +563,12 @@ int EmcDns::TryMakeref(uint16_t label_ref) {
   m_label_ref = orig_label_ref;
   m_hdr->NSCount = m_hdr->ANCount;
   m_hdr->ANCount = 0;
-  printf("EmcDns::TryMakeref: Generated REF NS=%u\n", m_hdr->NSCount);
+  printf("GxcDns::TryMakeref: Generated REF NS=%u\n", m_hdr->NSCount);
   return m_hdr->NSCount;
-} //  EmcDns::TryMakeref
+} //  GxcDns::TryMakeref
 /*---------------------------------------------------*/
 
-int EmcDns::Tokenize(const char *key, const char *sep2, char **tokens, char *buf) {
+int GxcDns::Tokenize(const char *key, const char *sep2, char **tokens, char *buf) {
   int tokensN = 0;
 
   // Figure out main separator. If not defined, use |
@@ -618,11 +618,11 @@ int EmcDns::Tokenize(const char *key, const char *sep2, char **tokens, char *buf
       break;
   } // for - big tokens (MX, A, AAAA, etc)
   return tokensN;
-} // EmcDns::Tokenize
+} // GxcDns::Tokenize
 
 /*---------------------------------------------------*/
 
-void EmcDns::Answer_ALL(uint16_t qtype, char *buf) {
+void GxcDns::Answer_ALL(uint16_t qtype, char *buf) {
   const char *key;
   switch(qtype) {
       case  1 : key = "A";      break;
@@ -638,7 +638,7 @@ void EmcDns::Answer_ALL(uint16_t qtype, char *buf) {
   char *tokens[MAX_TOK];
   int tokQty = Tokenize(key, ",", tokens, buf);
 
-  if(m_verbose > 0) printf("EmcDns::Answer_ALL(QT=%d, key=%s); TokenQty=%d\n", qtype, key, tokQty);
+  if(m_verbose > 0) printf("GxcDns::Answer_ALL(QT=%d, key=%s); TokenQty=%d\n", qtype, key, tokQty);
 
   // Shuffle tokens for randomization output order
   for(int i = tokQty; i > 1; ) {
@@ -651,7 +651,7 @@ void EmcDns::Answer_ALL(uint16_t qtype, char *buf) {
 
   for(int tok_no = 0; tok_no < tokQty; tok_no++) {
       if(m_verbose > 1) 
-	printf("\tEmcDns::Answer_ALL: Token:%u=[%s]\n", tok_no, tokens[tok_no]);
+	printf("\tGxcDns::Answer_ALL: Token:%u=[%s]\n", tok_no, tokens[tok_no]);
       Out2(m_label_ref);
       Out2(qtype); // A record, or maybe something else
       Out2(1); //  INET
@@ -668,11 +668,11 @@ void EmcDns::Answer_ALL(uint16_t qtype, char *buf) {
       } // swithc
   } // for
   m_hdr->ANCount += tokQty;
-} // EmcDns::Answer_A 
+} // GxcDns::Answer_A 
 
 /*---------------------------------------------------*/
 
-void EmcDns::Fill_RD_IP(char *ipddrtxt, int af) {
+void GxcDns::Fill_RD_IP(char *ipddrtxt, int af) {
   uint16_t out_sz;
   switch(af) {
       case AF_INET : out_sz = 4;  break;
@@ -691,11 +691,11 @@ void EmcDns::Fill_RD_IP(char *ipddrtxt, int af) {
   Out2(htons(sizeof(inetaddr)));
   Out4(inetaddr);
 #endif
-} // EmcDns::Fill_RD_IP
+} // GxcDns::Fill_RD_IP
 
 /*---------------------------------------------------*/
 
-void EmcDns::Fill_RD_DName(char *txt, uint8_t mxsz, int8_t txtcor) {
+void GxcDns::Fill_RD_DName(char *txt, uint8_t mxsz, int8_t txtcor) {
   uint8_t *snd0 = m_snd;
   m_snd += 3 + mxsz; // skip SZ and sz0
   uint8_t *tok_sz = m_snd - 1;
@@ -731,14 +731,14 @@ void EmcDns::Fill_RD_DName(char *txt, uint8_t mxsz, int8_t txtcor) {
     *snd0++ = mx_pri >> 8;
     *snd0++ = mx_pri;
   }
-} // EmcDns::Fill_RD_DName
+} // GxcDns::Fill_RD_DName
 
 /*---------------------------------------------------*/
 /*---------------------------------------------------*/
 
-int EmcDns::Search(uint8_t *key) {
+int GxcDns::Search(uint8_t *key) {
   if(m_verbose > 1) 
-    printf("EmcDns::Search(%s)\n", key);
+    printf("GxcDns::Search(%s)\n", key);
 
   string value;
   if (!hooks->getNameValue(string("dns:") + (const char *)key, value))
@@ -746,18 +746,18 @@ int EmcDns::Search(uint8_t *key) {
 
   strcpy(m_value, value.c_str());
   return 1;
-} //  EmcDns::Search
+} //  GxcDns::Search
 
 /*---------------------------------------------------*/
 
-int EmcDns::LocalSearch(const uint8_t *key, uint8_t pos, uint8_t step) {
+int GxcDns::LocalSearch(const uint8_t *key, uint8_t pos, uint8_t step) {
   if(m_verbose > 1) 
-    printf("EmcDns::LocalSearch(%s, %u, %u) called\n", key, pos, step);
+    printf("GxcDns::LocalSearch(%s, %u, %u) called\n", key, pos, step);
     do {
       pos += step;
       if(m_ht_offset[pos] == 0) {
         if(m_verbose > 3) 
-  	  printf("EmcDns::LocalSearch: Local key=[%s] not found; go to nameindex search\n", key);
+  	  printf("GxcDns::LocalSearch: Local key=[%s] not found; go to nameindex search\n", key);
          return 0; // Reached EndOfList 
       } 
     } while(m_ht_offset[pos] > 0 || strcmp((const char *)key, m_local_base - m_ht_offset[pos]) != 0);
@@ -765,20 +765,20 @@ int EmcDns::LocalSearch(const uint8_t *key, uint8_t pos, uint8_t step) {
   strcpy(m_value, strchr(m_local_base - m_ht_offset[pos], 0) + 1);
 
   return 1;
-} // EmcDns::LocalSearch
+} // GxcDns::LocalSearch
 
 
 /*---------------------------------------------------*/
 // Returns x>0 = hash index to update size; x<0 = disable;
-DNSAP *EmcDns::CheckDAP(uint32_t ip_addr) { 
+DNSAP *GxcDns::CheckDAP(uint32_t ip_addr) { 
   uint32_t hash = ip_addr * m_daprand;
   hash ^= hash >> 16;
   hash += hash >> 8;
-  DNSAP *dap = m_dap_ht + (hash & (EMCDNS_DAPSIZE - 1));
+  DNSAP *dap = m_dap_ht + (hash & (GXCDNS_DAPSIZE - 1));
   uint16_t timestamp = time(NULL) >> 6; // time in 64s ticks
   uint16_t dt = timestamp - dap->timestamp;
   dap->ed_size = (dt > 15? 0 : dap->ed_size >> dt) + 1;
   dap->timestamp = timestamp;
-  return (dap->ed_size <= EMCDNS_DAPTRESHOLD)? dap : NULL;
-} // EmcDns::CheckDAP 
+  return (dap->ed_size <= GXCDNS_DAPTRESHOLD)? dap : NULL;
+} // GxcDns::CheckDAP 
 

@@ -28,7 +28,7 @@ extern const std::string CLIENT_BUILD;
 extern const std::string CLIENT_DATE;
 
 // ppcoin version - intended for display purpose ONLY
-// emercoin: is also used to identify target for alerts
+// gongxincoin: is also used to identify target for alerts
 #define EMERCOIN_VERSION_MAJOR       0
 #define EMERCOIN_VERSION_MINOR       3
 #define EMERCOIN_VERSION_REVISION    7

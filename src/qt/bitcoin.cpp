@@ -35,7 +35,7 @@ Q_IMPORT_PLUGIN(qtaccessiblewidgets)
 #endif
 
 // Need a global reference for the notifications to find the GUI
-static EmercoinGUI *guiref;
+static GongxincoinGUI *guiref;
 static QSplashScreen *splashref;
 static WalletModel *walletmodel;
 static ClientModel *clientmodel;
@@ -118,7 +118,7 @@ void QueueShutdown()
  */
 std::string _(const char* psz)
 {
-    return QCoreApplication::translate("emercoin-core", psz).toStdString();
+    return QCoreApplication::translate("gongxincoin-core", psz).toStdString();
 }
 
 /* Handle runaway exceptions. Shows a message box with the problem and quits the program.
@@ -126,7 +126,7 @@ std::string _(const char* psz)
 static void handleRunawayException(std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
-    QMessageBox::critical(0, "Runaway exception", EmercoinGUI::tr("A fatal error occured. Emercoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
+    QMessageBox::critical(0, "Runaway exception", GongxincoinGUI::tr("A fatal error occured. Gongxincoin can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
     exit(1);
 }
 
@@ -136,7 +136,7 @@ int main(int argc, char *argv[])
     // Do this early as we don't want to bother initializing if we are just calling IPC
     for (int i = 1; i < argc; i++)
     {
-        if (boost::algorithm::istarts_with(argv[i], "emercoin:"))
+        if (boost::algorithm::istarts_with(argv[i], "gongxincoin:"))
         {
             const char *strURI = argv[i];
             try {
@@ -162,7 +162,7 @@ int main(int argc, char *argv[])
     // Command-line options take precedence:
     ParseParameters(argc, argv);
 
-    // ... then emercoin.conf:
+    // ... then gongxincoin.conf:
     if (!boost::filesystem::is_directory(GetDataDir(false)))
     {
         fprintf(stderr, "Error: Specified directory does not exist\n");
@@ -172,12 +172,12 @@ int main(int argc, char *argv[])
 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
-    app.setOrganizationName("EmerCoin");
-    app.setOrganizationDomain("emercoin.com");
+    app.setOrganizationName("GongxinCoin");
+    app.setOrganizationDomain("gongxincoin.com");
     if(GetBoolArg("-testnet")) // Separate UI settings for testnet
-        app.setApplicationName("EmerCoin-Qt-testnet");
+        app.setApplicationName("GongxinCoin-Qt-testnet");
     else
-        app.setApplicationName("EmerCoin-Qt");
+        app.setApplicationName("GongxinCoin-Qt");
 
     // ... then GUI settings:
     OptionsModel optionsModel;
@@ -222,7 +222,7 @@ int main(int argc, char *argv[])
 
     try
     {
-        EmercoinGUI window;
+        GongxincoinGUI window;
         guiref = &window;
         if(AppInit2(argc, argv))
         {
@@ -259,7 +259,7 @@ int main(int argc, char *argv[])
                 // Check for URI in argv
                 for (int i = 1; i < argc; i++)
                 {
-                    if (boost::algorithm::istarts_with(argv[i], "emercoin:"))
+                    if (boost::algorithm::istarts_with(argv[i], "gongxincoin:"))
                     {
                         const char *strURI = argv[i];
                         try {
@@ -280,7 +280,7 @@ int main(int argc, char *argv[])
                 clientmodel = 0;
                 walletmodel = 0;
             }
-            // Shutdown the core and it's threads, but don't exit Emercoin-Qt here
+            // Shutdown the core and it's threads, but don't exit Gongxincoin-Qt here
             Shutdown(NULL);
         }
         else

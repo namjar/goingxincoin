@@ -1,7 +1,7 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin developers
 // Copyright (c) 2011-2013 The PPCoin developers
-// Copyright (c) 2013-2014 The EmerCoin developers
+// Copyright (c) 2013-2014 The GongxinCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -314,10 +314,10 @@ Value stop(const Array& params, bool fHelp)
     if (fHelp || params.size() != 0)
         throw runtime_error(
             "stop\n"
-            "Stop emercoin server.");
+            "Stop gongxincoin server.");
     // Shutdown will take long enough that the response should get back
     StartShutdown();
-    return "emercoin server stopping";
+    return "gongxincoin server stopping";
 }
 
 
@@ -478,7 +478,7 @@ Value getnewaddress(const Array& params, bool fHelp)
     if (fHelp || params.size() > 1)
         throw runtime_error(
             "getnewaddress [account]\n"
-            "Returns a new emercoin address for receiving payments.  "
+            "Returns a new gongxincoin address for receiving payments.  "
             "If [account] is specified (recommended), it is added to the address book "
             "so payments received with the address will be credited to [account].");
 
@@ -545,7 +545,7 @@ Value getaccountaddress(const Array& params, bool fHelp)
     if (fHelp || params.size() != 1)
         throw runtime_error(
             "getaccountaddress <account>\n"
-            "Returns the current emercoin address for receiving payments to this account.");
+            "Returns the current gongxincoin address for receiving payments to this account.");
 
     // Parse the account first so we don't generate a key if there's an error
     string strAccount = AccountFromValue(params[0]);
@@ -563,12 +563,12 @@ Value setaccount(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
-            "setaccount <emercoinaddress> <account>\n"
+            "setaccount <gongxincoinaddress> <account>\n"
             "Sets the account associated with the given address.");
 
     CBitcoinAddress address(params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(-5, "Invalid emercoin address");
+        throw JSONRPCError(-5, "Invalid gongxincoin address");
 
 
     string strAccount;
@@ -593,12 +593,12 @@ Value getaccount(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "getaccount <emercoinaddress>\n"
+            "getaccount <gongxincoinaddress>\n"
             "Returns the account associated with the given address.");
 
     CBitcoinAddress address(params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(-5, "Invalid emercoin address");
+        throw JSONRPCError(-5, "Invalid gongxincoin address");
 
     string strAccount;
     map<CTxDestination, string>::iterator mi = pwalletMain->mapAddressBook.find(address.Get());
@@ -663,17 +663,17 @@ Value sendtoaddress(const Array& params, bool fHelp)
 {
     if (pwalletMain->IsCrypted() && (fHelp || params.size() < 2 || params.size() > 4))
         throw runtime_error(
-            "sendtoaddress <emercoinaddress> <amount> [comment] [comment-to]\n"
+            "sendtoaddress <gongxincoinaddress> <amount> [comment] [comment-to]\n"
             "<amount> is a real and is rounded to the nearest 0.000001\n"
             "requires wallet passphrase to be set with walletpassphrase first");
     if (!pwalletMain->IsCrypted() && (fHelp || params.size() < 2 || params.size() > 4))
         throw runtime_error(
-            "sendtoaddress <emercoinaddress> <amount> [comment] [comment-to]\n"
+            "sendtoaddress <gongxincoinaddress> <amount> [comment] [comment-to]\n"
             "<amount> is a real and is rounded to the nearest 0.000001");
 
     CBitcoinAddress address(params[0].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(-5, "Invalid emercoin address");
+        throw JSONRPCError(-5, "Invalid gongxincoin address");
 
     // Amount
     int64 nAmount = AmountFromValue(params[1]);
@@ -701,7 +701,7 @@ Value signmessage(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 2)
         throw runtime_error(
-            "signmessage <emercoinaddress> <message>\n"
+            "signmessage <gongxincoinaddress> <message>\n"
             "Sign a message with the private key of an address");
 
     if (pwalletMain->IsLocked())
@@ -737,7 +737,7 @@ Value verifymessage(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 3)
         throw runtime_error(
-            "verifymessage <emercoinaddress> <signature> <message>\n"
+            "verifymessage <gongxincoinaddress> <signature> <message>\n"
             "Verify a signed message");
 
     string strAddress  = params[0].get_str();
@@ -774,14 +774,14 @@ Value getreceivedbyaddress(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
-            "getreceivedbyaddress <emercoinaddress> [minconf=1]\n"
-            "Returns the total amount received by <emercoinaddress> in transactions with at least [minconf] confirmations.");
+            "getreceivedbyaddress <gongxincoinaddress> [minconf=1]\n"
+            "Returns the total amount received by <gongxincoinaddress> in transactions with at least [minconf] confirmations.");
 
-    // Emercoin address
+    // Gongxincoin address
     CBitcoinAddress address = CBitcoinAddress(params[0].get_str());
     CScript scriptPubKey;
     if (!address.IsValid())
-        throw JSONRPCError(-5, "Invalid emercoin address");
+        throw JSONRPCError(-5, "Invalid gongxincoin address");
     scriptPubKey.SetDestination(address.Get());
     if (!IsMine(*pwalletMain,scriptPubKey))
         return (double)0.0;
@@ -1000,18 +1000,18 @@ Value sendfrom(const Array& params, bool fHelp)
 {
     if (pwalletMain->IsCrypted() && (fHelp || params.size() < 3 || params.size() > 6))
         throw runtime_error(
-            "sendfrom <fromaccount> <toemercoinaddress> <amount> [minconf=1] [comment] [comment-to]\n"
+            "sendfrom <fromaccount> <togongxincoinaddress> <amount> [minconf=1] [comment] [comment-to]\n"
             "<amount> is a real and is rounded to the nearest 0.000001\n"
             "requires wallet passphrase to be set with walletpassphrase first");
     if (!pwalletMain->IsCrypted() && (fHelp || params.size() < 3 || params.size() > 6))
         throw runtime_error(
-            "sendfrom <fromaccount> <toemercoinaddress> <amount> [minconf=1] [comment] [comment-to]\n"
+            "sendfrom <fromaccount> <togongxincoinaddress> <amount> [minconf=1] [comment] [comment-to]\n"
             "<amount> is a real and is rounded to the nearest 0.000001");
 
     string strAccount = AccountFromValue(params[0]);
     CBitcoinAddress address(params[1].get_str());
     if (!address.IsValid())
-        throw JSONRPCError(-5, "Invalid emercoin address");
+        throw JSONRPCError(-5, "Invalid gongxincoin address");
     int64 nAmount = AmountFromValue(params[2]);
     if (nAmount < MIN_TXOUT_AMOUNT)
         throw JSONRPCError(-101, "Send amount too small");
@@ -1074,7 +1074,7 @@ Value sendmany(const Array& params, bool fHelp)
     {
         CBitcoinAddress address(s.name_);
         if (!address.IsValid())
-            throw JSONRPCError(-5, string("Invalid emercoin address:")+s.name_);
+            throw JSONRPCError(-5, string("Invalid gongxincoin address:")+s.name_);
 
         if (setAddress.count(address))
             throw JSONRPCError(-8, string("Invalid parameter, duplicated address: ")+s.name_);
@@ -1122,7 +1122,7 @@ Value addmultisigaddress(const Array& params, bool fHelp)
     {
         string msg = "addmultisigaddress <nrequired> <'[\"key\",\"key\"]'> [account]\n"
             "Add a nrequired-to-sign multisignature address to the wallet\"\n"
-            "each key is a emercoin address or hex-encoded public key\n"
+            "each key is a gongxincoin address or hex-encoded public key\n"
             "If [account] is specified, assign address to [account].";
         throw runtime_error(msg);
     }
@@ -1146,7 +1146,7 @@ Value addmultisigaddress(const Array& params, bool fHelp)
     {
         const std::string& ks = keys[i].get_str();
 
-        // Case 1: emercoin address and we have full public key:
+        // Case 1: gongxincoin address and we have full public key:
         CBitcoinAddress address(ks);
         if (address.IsValid())
         {
@@ -1334,7 +1334,7 @@ Value gettxlistfor(const Array& params, bool fHelp)
 
     CBitcoinAddress searchAddress(params[2].get_str());
     if (!searchAddress.IsValid())
-        throw runtime_error("<address> is not valid emercoin address\n");
+        throw runtime_error("<address> is not valid gongxincoin address\n");
 
     int type = 0;
     if (params.size() > 3)
@@ -2090,7 +2090,7 @@ Value encryptwallet(const Array& params, bool fHelp)
     // slack space in .dat files; that is bad if the old data is
     // unencrypted private keys.  So:
     StartShutdown();
-    return "wallet encrypted; emercoin server stopping, restart to run with encrypted wallet";
+    return "wallet encrypted; gongxincoin server stopping, restart to run with encrypted wallet";
 }
 
 class DescribeAddressVisitor : public boost::static_visitor<Object>
@@ -2133,8 +2133,8 @@ Value validateaddress(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "validateaddress <emercoinaddress>\n"
-            "Return information about <emercoinaddress>.");
+            "validateaddress <gongxincoinaddress>\n"
+            "Return information about <gongxincoinaddress>.");
 
     CBitcoinAddress address(params[0].get_str());
     bool isValid = address.IsValid();
@@ -2171,10 +2171,10 @@ Value getwork(const Array& params, bool fHelp)
             "If [data] is specified, tries to solve the block and returns true if it was successful.");
 
     if (vNodes.empty())
-        throw JSONRPCError(-9, "EmerCoin is not connected!");
+        throw JSONRPCError(-9, "GongxinCoin is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(-10, "EmerCoin is downloading blocks...");
+        throw JSONRPCError(-10, "GongxinCoin is downloading blocks...");
 
     typedef map<uint256, pair<CBlock*, CScript> > mapNewBlock_t;
     static mapNewBlock_t mapNewBlock;
@@ -2302,10 +2302,10 @@ Value getblocktemplate(const Array& params, bool fHelp)
         throw JSONRPCError(-8, "Invalid mode");
 
     if (vNodes.empty())
-        throw JSONRPCError(-9, "EmerCoin is not connected!");
+        throw JSONRPCError(-9, "GongxinCoin is not connected!");
 
     if (IsInitialBlockDownload())
-        throw JSONRPCError(-10, "EmerCoin is downloading blocks...");
+        throw JSONRPCError(-10, "GongxinCoin is downloading blocks...");
 
     static CReserveKey reservekey(pwalletMain);
 
@@ -2801,7 +2801,7 @@ string HTTPPost(const string& strMsg, const map<string,string>& mapRequestHeader
 {
     ostringstream s;
     s << "POST / HTTP/1.1\r\n"
-      << "User-Agent: emercoin-json-rpc/" << FormatFullVersion() << "\r\n"
+      << "User-Agent: gongxincoin-json-rpc/" << FormatFullVersion() << "\r\n"
       << "Host: 127.0.0.1\r\n"
       << "Content-Type: application/json\r\n"
       << "Content-Length: " << strMsg.size() << "\r\n"
@@ -2832,7 +2832,7 @@ static string HTTPReply(int nStatus, const string& strMsg)
     if (nStatus == 401)
         return strprintf("HTTP/1.0 401 Authorization Required\r\n"
             "Date: %s\r\n"
-            "Server: emercoin-json-rpc/%s\r\n"
+            "Server: gongxincoin-json-rpc/%s\r\n"
             "WWW-Authenticate: Basic realm=\"jsonrpc\"\r\n"
             "Content-Type: text/html\r\n"
             "Content-Length: 296\r\n"
@@ -2859,7 +2859,7 @@ static string HTTPReply(int nStatus, const string& strMsg)
             "Connection: close\r\n"
             "Content-Length: %d\r\n"
             "Content-Type: application/json\r\n"
-            "Server: emercoin-json-rpc/%s\r\n"
+            "Server: gongxincoin-json-rpc/%s\r\n"
             "\r\n"
             "%s",
         nStatus,
@@ -2941,7 +2941,7 @@ bool HTTPAuthorized(map<string, string>& mapHeaders)
 }
 
 //
-// JSON-RPC protocol.  Emercoin speaks version 1.0 for maximum compatibility,
+// JSON-RPC protocol.  Gongxincoin speaks version 1.0 for maximum compatibility,
 // but uses JSON-RPC 1.1/2.0 standards for parts of the 1.0 standard that were
 // unspecified (HTTP errors and contents of 'error').
 //
@@ -3073,7 +3073,7 @@ void ThreadRPCServer2(void* parg)
     {
         unsigned char rand_pwd[32];
         RAND_bytes(rand_pwd, 32);
-        string strWhatAmI = "To use emercoind";
+        string strWhatAmI = "To use gongxincoind";
         if (mapArgs.count("-server"))
             strWhatAmI = strprintf(_("To use the %s option"), "\"-server\"");
         else if (mapArgs.count("-daemon"))
@@ -3081,7 +3081,7 @@ void ThreadRPCServer2(void* parg)
         ThreadSafeMessageBox(strprintf(
             _("%s, you must set a rpcpassword in the configuration file:\n %s\n"
               "It is recommended you use the following random password:\n"
-              "rpcuser=emercoinrpc\n"
+              "rpcuser=gongxincoinrpc\n"
               "rpcpassword=%s\n"
               "(you do not need to remember this password)\n"
               "If the file does not exist, create it with owner-readable-only file permissions.\n"),

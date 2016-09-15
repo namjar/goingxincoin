@@ -1,7 +1,7 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2012 The Bitcoin Developers
 // Copyright (c) 2011-2012 The PPCoin developers
-// Copyright (c) 2013-2014 The EmerCoin developers
+// Copyright (c) 2013-2014 The GongxinCoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -256,7 +256,7 @@ public:
     bool operator> (const CBase58Data& b58) const { return CompareTo(b58) >  0; }
 };
 
-/** base58-encoded emercoin addresses.
+/** base58-encoded gongxincoin addresses.
  * Public-key-hash-addresses have version 55 (or 111 testnet).
  * The data vector contains RIPEMD160(SHA256(pubkey)), where pubkey is the serialized public key.
  * Script-hash-addresses have version 117 (or 196 testnet).
@@ -279,8 +279,8 @@ class CBitcoinAddress : public CBase58Data
 public:
     enum
     {
-        PUBKEY_ADDRESS = 33,  //55 emercoin: addresses begin with 'E'
-        SCRIPT_ADDRESS = 92, //117 emercoin: addresses begin with 'e'
+        PUBKEY_ADDRESS = 33,  //55 gongxincoin: addresses begin with 'E'
+        SCRIPT_ADDRESS = 92, //117 gongxincoin: addresses begin with 'e'
         PUBKEY_ADDRESS_TEST = 111,
         SCRIPT_ADDRESS_TEST = 196,
     };
