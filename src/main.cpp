@@ -953,7 +953,7 @@ int64 GetProofOfWorkReward(unsigned int nBits)
 // ppcoin: miner's coin stake is rewarded based on coin age spent (coin-days)
 int64 GetProofOfStakeReward(int64 nCoinAge)
 {
-    static int64 nRewardCoinYear = 6 * CENT;  // creation amount per coin-year
+    static int64 nRewardCoinYear = 0.1 * CENT;  // creation amount per coin-year
     int64 nSubsidy = nCoinAge * 33 / (365 * 33 + 8) * nRewardCoinYear;
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfStakeReward(): create=%s nCoinAge=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nCoinAge);
@@ -1937,7 +1937,7 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos)
 
 
 
-
+//@todo riprendere da qui
 bool CBlock::CheckBlock() const
 {
     // These are checks that are independent of context
