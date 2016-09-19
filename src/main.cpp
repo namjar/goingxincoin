@@ -1772,6 +1772,8 @@ bool CBlock::CheckBlock()const{
 
   // Check coinbase reward
   // changed getMinFee() to GetMinFee2()
+  
+  //@todo fix getProofOfWorkReward Call
   if (vtx[0].GetValueOut() > (IsProofOfWork() ? (GetProofOfWorkReward(nBits) - vtx[0].GetMinFee2() + MIN_TX_FEE) : 0))
     return DoS(50, error("CheckBlock() : coinbase reward exceeded %s > %s",
         FormatMoney(vtx[0].GetValueOut()).c_str(),
@@ -3645,7 +3647,14 @@ void BitcoinMiner(CWallet * pwallet, bool fProofOfStake) {
     //
     unsigned int nTransactionsUpdatedLast = nTransactionsUpdated;
     CBlockIndex * pindexPrev = pindexBest;
+	
+	//@todo tests this part of pos/pow switching
 
+	if(pindexPrev.nHeight > BLOCK_REWARD_4)
+		fProofOfStake = true;
+	else
+		fProofOfStake = false;
+	
     auto_ptr < CBlock > pblock(CreateNewBlock(pwallet, fProofOfStake));
     if (!pblock.get())
       return;
