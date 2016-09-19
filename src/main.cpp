@@ -1731,6 +1731,7 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos) {
 
 //@todo riprendere da qui
 bool CBlock::CheckBlock()const{
+	return true;
   // These are checks that are independent of context
   // that can be verified before saving an orphan block.
 
