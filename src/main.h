@@ -39,7 +39,7 @@ static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const int64 MIN_TX_FEE = CENT;
 static const int64 MIN_RELAY_TX_FEE = 2 * SUBCENT;
 static const int64 MAX_MONEY = 1000000000000 * COIN;
-static const int64 MAX_MINT_PROOF_OF_WORK = 5020 * COIN;
+static const int64 MAX_MINT_PROOF_OF_WORK = 5 * COIN; //@ todo cambiare gestione reward per blocco, ora è 5020 
 static const int64 MIN_TXOUT_AMOUNT = MIN_TX_FEE;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 static const int COINBASE_MATURITY_PPC = 32; //12+20 = 32
@@ -48,6 +48,12 @@ static const int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 static const int STAKE_TARGET_SPACING = 1 * 60; // 10-minute block spacing 
 static const int STAKE_MIN_AGE = 60 * 60 * 24 * 30; // minimum age for coin age
 static const int STAKE_MAX_AGE = 60 * 60 * 24 * 90; // stake age of full weight
+
+//@todo test gxc addons
+static const int BLOCK_REWARD_2 = 299999999999;
+static const int BLOCK_REWARD_3 = 600000000000;
+static const int BLOCK_REWARD_4 = 900000000000;
+
 
 #ifdef USE_UPNP
 static const int fHaveUPnP = true;
