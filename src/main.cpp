@@ -2145,7 +2145,7 @@ bool LoadBlockIndex(bool fAllowNew) {
     txNew.vin.resize(1);
     txNew.vout.resize(1);
     txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(9999) << vector < unsigned char > ((const unsigned char * )pszTimestamp, (const unsigned char * )pszTimestamp + strlen(pszTimestamp));
-    txNew.vout[0].SetEmpty();
+    txNew.vout[0] = 1;
     CBlock block;
     block.vtx.push_back(txNew);
     block.hashPrevBlock = 0;
