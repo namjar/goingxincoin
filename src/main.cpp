@@ -3495,7 +3495,7 @@ CBlock * CreateNewBlock(CWallet * pwallet, bool fProofOfStake) {
 
   }
   if (pblock->IsProofOfWork())
-    pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(GetLastBlockIndex(pblock),pblock->nBits);
+    pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(GetLastBlockIndex(pindexPrev->nHeight),pblock->nBits);
 
   // Fill in header
   pblock->hashPrevBlock = pindexPrev->GetBlockHash();
