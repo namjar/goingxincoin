@@ -780,6 +780,7 @@ double GetDifficulty(unsigned int nBits) {
 int64 GetProofOfWorkReward(unsigned int nBits, unsigned int nHeight) {
 
   //@todo new arguments blockindex->nHeight
+  nHeight = int64(nHeight);
   CBigNum bnSubsidyLimit = MAX_MINT_PROOF_OF_WORK;
   //CBigNum bnTarget;
   //bnTarget.SetCompact(nBits);
@@ -821,8 +822,9 @@ int64 GetProofOfWorkReward(unsigned int nBits, unsigned int nHeight) {
   //            bnLowerBound = bnMidValue;
   //    }
   //}
-
-  if (nHeight < BLOCK_REWARD_2) {
+  if (nHeight === int64(0)){
+	 bnUpperBound = 1; 
+  } else if (nHeight < BLOCK_REWARD_2) {
     bnUpperBound = 2;
   } else if (nHeight < BLOCK_REWARD_3) {
     bnUpperBound = 3;
@@ -1731,7 +1733,6 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos) {
 
 //@todo riprendere da qui
 bool CBlock::CheckBlock()const{
-	return true;
   // These are checks that are independent of context
   // that can be verified before saving an orphan block.
 
@@ -2169,7 +2170,7 @@ bool LoadBlockIndex(bool fAllowNew) {
     printf("block.nTime = %u \n", block.nTime);
     printf("block.nNonce = %u \n", block.nNonce);
     printf("block.nBits = %u \n", block.nBits);
-    assert(block.hashMerkleRoot == uint256("0xa4c9a6b80a63fda23a53ef2e3b35d548ff890a40b5592e61544b0bd293f45a26"));
+    assert(block.hashMerkleRoot == uint256("0x0dab727ec94e57c43afc19c09457fa1f641a09c19587773b9f283022962e5c0c"));
 
     if (block.GetHash() != hashGenesisBlock) {
       block.nNonce = 0;
@@ -3497,7 +3498,7 @@ CBlock * CreateNewBlock(CWallet * pwallet, bool fProofOfStake) {
 
   }
   if (pblock->IsProofOfWork())
-    pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(GetLastBlockIndex(pindexPrev,false)->nHeight,pblock->nBits);
+    pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(pblock->nBits, GetLastBlockIndex(pindexPrev,false)->nHeight);
 
   // Fill in header
   pblock->hashPrevBlock = pindexPrev->GetBlockHash();

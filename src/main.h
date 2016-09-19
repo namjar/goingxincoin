@@ -50,9 +50,9 @@ static const int STAKE_MIN_AGE = 60 * 60 * 24 * 30; // minimum age for coin age
 static const int STAKE_MAX_AGE = 60 * 60 * 24 * 90; // stake age of full weight
 
 //@todo test gxc addons
-static const int BLOCK_REWARD_2 = 299999999999;
-static const int BLOCK_REWARD_3 = 600000000000;
-static const int BLOCK_REWARD_4 = 900000000000;
+static const int64 BLOCK_REWARD_2 = 299999999999;
+static const int64 BLOCK_REWARD_3 = 600000000000;
+static const int64 BLOCK_REWARD_4 = 1000000000000;
 
 
 #ifdef USE_UPNP
@@ -61,8 +61,8 @@ static const int fHaveUPnP = true;
 static const int fHaveUPnP = false;
 #endif
 
-static const uint256 hashGenesisBlockOfficial("0xb92d8263044dd9e9a6bf659722e6dc06a676d485fd7fcbf7218b4515b1e9357f");
-static const uint256 hashGenesisBlockTestNet("0xb92d8263044dd9e9a6bf659722e6dc06a676d485fd7fcbf7218b4515b1e9357f");
+static const uint256 hashGenesisBlockOfficial("0xa60262d94a500e06dedf6ece28d5d284d0621d93e5a8bcd9a58486e484ce41e8");
+static const uint256 hashGenesisBlockTestNet("0x2aa1025ff79e48048a1da1e1bc9ed4203899dd952f3f1e95026ad76601f974b6");
 
 static const int64 nMaxClockDrift = 2 * 60 * 60;        // two hours
 
