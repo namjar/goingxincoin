@@ -11,9 +11,9 @@
  # include "init.h"
  # include "ui_interface.h"
  # include "kernel.h"
- # include < boost / algorithm / string / replace.hpp >
- # include < boost / filesystem.hpp >
- # include < boost / filesystem / fstream.hpp >
+ # include <boost/algorithm/string/replace.hpp>
+ # include <boost/filesystem.hpp>
+ # include <boost/filesystem/fstream.hpp>
 
 using namespace std;
 using namespace boost;
@@ -1774,10 +1774,10 @@ bool CBlock::CheckBlock()const{
   // changed getMinFee() to GetMinFee2()
   
   //@todo fix getProofOfWorkReward Call
-  if (vtx[0].GetValueOut() > (IsProofOfWork() ? (GetProofOfWorkReward(nBits) - vtx[0].GetMinFee2() + MIN_TX_FEE) : 0))
-    return DoS(50, error("CheckBlock() : coinbase reward exceeded %s > %s",
-        FormatMoney(vtx[0].GetValueOut()).c_str(),
-        FormatMoney(IsProofOfWork() ? GetProofOfWorkReward(nBits) : 0).c_str()));
+ // if (vtx[0].GetValueOut() > (IsProofOfWork() ? (GetProofOfWorkReward(nBits) - vtx[0].GetMinFee2() + MIN_TX_FEE) : 0))
+ //   return DoS(50, error("CheckBlock() : coinbase reward exceeded %s > %s",
+ //       FormatMoney(vtx[0].GetValueOut()).c_str(),
+ //       FormatMoney(IsProofOfWork() ? GetProofOfWorkReward(nBits) : 0).c_str()));
 
   // Check transactions
   BOOST_FOREACH(const CTransaction & tx, vtx) {
@@ -3495,7 +3495,7 @@ CBlock * CreateNewBlock(CWallet * pwallet, bool fProofOfStake) {
 
   }
   if (pblock->IsProofOfWork())
-    pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(pblock->nBits);
+    pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(GetLastBlockIndex(pindexPrev->nHeight),pblock->nBits);
 
   // Fill in header
   pblock->hashPrevBlock = pindexPrev->GetBlockHash();
@@ -3650,7 +3650,7 @@ void BitcoinMiner(CWallet * pwallet, bool fProofOfStake) {
 	
 	//@todo tests this part of pos/pow switching
 
-	if(pindexPrev.nHeight > BLOCK_REWARD_4)
+	if(pindexPrev->nHeight > BLOCK_REWARD_4)
 		fProofOfStake = true;
 	else
 		fProofOfStake = false;

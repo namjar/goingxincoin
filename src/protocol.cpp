@@ -23,7 +23,7 @@ static unsigned int nMessageStartTestSwitchTime = 1346200000;
 
 // PPCoin message start (switch from Bitcoin's in v0.2)
 static unsigned char pchMessageStartBitcoin[4] = { 0xf9, 0xbe, 0xb4, 0xd9 };
-static unsigned char pchMessageStartPPCoin[4] = { 0xg2, 0xg0, 0xg1, 0xg6 };
+static unsigned char pchMessageStartPPCoin[4] = { 0xf2, 0xf0, 0xf1, 0xf6 };
 static unsigned int nMessageStartSwitchTime = 1347300000;
 
 void GetMessageStart(unsigned char pchMessageStart[], bool fPersistent)
