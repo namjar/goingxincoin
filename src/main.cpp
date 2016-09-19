@@ -2141,7 +2141,7 @@ bool LoadBlockIndex(bool fAllowNew) {
     // Genesis block
     const char * pszTimestamp = "Integrity is the lifeblood of life, is the foundation of all value.";
     CTransaction txNew;
-    txNew.nTime = 1386627289;
+    txNew.nTime = 1474288051;
     txNew.vin.resize(1);
     txNew.vout.resize(1);
     txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(9999) << vector < unsigned char > ((const unsigned char * )pszTimestamp, (const unsigned char * )pszTimestamp + strlen(pszTimestamp));
@@ -2151,12 +2151,12 @@ bool LoadBlockIndex(bool fAllowNew) {
     block.hashPrevBlock = 0;
     block.hashMerkleRoot = block.BuildMerkleTree();
     block.nVersion = 1;
-    block.nTime = 1386628033;
+    block.nTime = 1474288051;
     block.nBits = bnProofOfWorkLimit.GetCompact();
     block.nNonce = 139946546u;
 
     if (fTestNet) {
-      block.nTime = 1386628033;
+      block.nTime = 1474288051;
       block.nNonce = 18330017;
     }
 
@@ -3495,7 +3495,7 @@ CBlock * CreateNewBlock(CWallet * pwallet, bool fProofOfStake) {
 
   }
   if (pblock->IsProofOfWork())
-    pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(GetLastBlockIndex(pindexPrev->nHeight),pblock->nBits);
+    pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(GetLastBlockIndex(pindexPrev,false)->nHeight,pblock->nBits);
 
   // Fill in header
   pblock->hashPrevBlock = pindexPrev->GetBlockHash();

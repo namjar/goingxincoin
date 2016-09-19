@@ -1389,7 +1389,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
 	//@todo test new changes
     //int64 nPoWReward = GetProofOfWorkReward(GetLastBlockIndex(pindexBest, false)->nBits);
 	
-	nPoWReward = GetProofOfWorkReward((GetLastBlockIndex(pindexBest, false)->nHeight, GetLastBlockIndex(pindexBest, false)->nBits);
+	int64 nPoWReward = GetProofOfWorkReward(GetLastBlockIndex(pindexBest, false)->nHeight, GetLastBlockIndex(pindexBest, false)->nBits);
     int64 nCombineThreshold = nPoWReward / 3;
 
     CBigNum bnTargetPerCoinDay;
