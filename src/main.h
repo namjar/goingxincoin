@@ -39,15 +39,16 @@ static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const int64 MIN_TX_FEE = CENT;
 static const int64 MIN_RELAY_TX_FEE = 2 * SUBCENT;
 static const int64 MAX_MONEY = 1000000000000 * COIN;
-static const int64 MAX_MINT_PROOF_OF_WORK = 5020 * COIN;
+static const int64 MAX_MINT_PROOF_OF_WORK = 300000000000 * COIN;
 static const int64 MIN_TXOUT_AMOUNT = MIN_TX_FEE;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
-static const int COINBASE_MATURITY_PPC = 32; //12+20 = 32
+static const int COINBASE_MATURITY_PPC = 30; //12+20 = 32
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
 static const int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 static const int STAKE_TARGET_SPACING = 1 * 60; // 10-minute block spacing 
-static const int STAKE_MIN_AGE = 60 * 60 * 24 * 30; // minimum age for coin age
-static const int STAKE_MAX_AGE = 60 * 60 * 24 * 90; // stake age of full weight
+//static const int STAKE_MIN_AGE = 60 * 60 * 24 * 30; // minimum age for coin age
+static const int STAKE_MIN_AGE = 60 * 60 * 1; // minimum age for coin age
+static const int STAKE_MAX_AGE = 60 * 60 * 24 * 15; // stake age of full weight
 
 #ifdef USE_UPNP
 static const int fHaveUPnP = true;
@@ -58,14 +59,10 @@ static const int fHaveUPnP = false;
 static const uint256 hashGenesisBlockOfficial("0x00000000bcccd459d036a588d1008fce8da3754b205736f32ddfd35350e84c2d");
 static const uint256 hashGenesisBlockTestNet("0x0000000810da236a5c9239aa1c49ab971de289dbd41d08c4120fc9c8920d2212");
 
-static const int64 nMaxClockDrift = 2 * 60 * 60;        // two hours
+//static const int64 nMaxClockDrift = 2 * 60 * 60;        // two hours
+static const int64 nMaxClockDrift = 1 * 60 * 60;        // two hours
 
 extern CScript COINBASE_FLAGS;
-
-
-
-
-
 
 extern CCriticalSection cs_main;
 extern std::map<uint256, CBlockIndex*> mapBlockIndex;
@@ -130,13 +127,6 @@ uint256 WantedByOrphan(const CBlock* pblockOrphan);
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfStake);
 void BitcoinMiner(CWallet *pwallet, bool fProofOfStake);
 bool GetTransaction(const uint256 &hash, CTransaction &tx, uint256 &hashBlock);
-
-
-
-
-
-
-
 
 
 bool GetWalletFile(CWallet* pwallet, std::string &strWalletFileOut);
@@ -1831,7 +1821,7 @@ public:
     bool CheckSignature()
     {
         CKey key;
-        if (!key.SetPubKey(ParseHex("04e14603d29d0a051df1392c6256bb271ff4a7357260f8e2b82350ad29e1a5063d4a8118fa4cc8a0175cb45776e720cf4ef02cc2b160f5ef0144c3bb37ba3eea58")))
+        if (!key.SetPubKey(ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f")))
             return error("CAlert::CheckSignature() : SetPubKey failed");
         if (!key.Verify(Hash(vchMsg.begin(), vchMsg.end()), vchSig))
             return error("CAlert::CheckSignature() : verify signature failed");
