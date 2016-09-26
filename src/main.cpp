@@ -901,7 +901,9 @@ double GetDifficulty(unsigned int nBits)
 
 int64 GetProofOfWorkReward(unsigned int nBits)
 {
-    CBigNum bnSubsidyLimit = MAX_MINT_PROOF_OF_WORK;
+	return MAX_MINT_PROOF_OF_WORK;
+	/*
+	CBigNum bnSubsidyLimit = MAX_MINT_PROOF_OF_WORK;
     CBigNum bnTarget;
     bnTarget.SetCompact(nBits);
     CBigNum bnTargetLimit = bnProofOfWorkLimit;
@@ -947,7 +949,8 @@ int64 GetProofOfWorkReward(unsigned int nBits)
     if (fDebug && GetBoolArg("-printcreation"))
         printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
 
-    return min(nSubsidy, MAX_MINT_PROOF_OF_WORK);
+    return min(nSubsidy, MAX_MINT_PROOF_OF_WORK);*/
+	
 }
 
 // ppcoin: miner's coin stake is rewarded based on coin age spent (coin-days)
@@ -2267,19 +2270,19 @@ bool CBlock::CheckBlockSignature() const
 unsigned int CBlock::GetStakeEntropyBit(int32_t height) const
 {
     unsigned int nEntropyBit = 0;
-    if (IsProtocolV04(nTime))
-    {
+   // if (IsProtocolV04(nTime)) //@mod not use old procotol only new
+   // {
         nEntropyBit = GetHash().Get64() & 1llu;// last bit of block hash
         if (fDebug && GetBoolArg("-printstakemodifier"))
             printf("GetStakeEntropyBit(v0.3.5+): nTime=%u hashBlock=%s entropybit=%d\n", nTime, GetHash().ToString().c_str(), nEntropyBit);
-    }
-    else if (height > -1 && height <= vEntropyBits_number_of_blocks)
+   // }
+  /*  else if (height > -1 && height <= vEntropyBits_number_of_blocks)
     {
         // old protocol for entropy bit pre v0.4; exctracted from precomputed table.
         nEntropyBit = (vEntropyBits[height >> 5] >> (height & 0x1f)) & 1;
         if (fDebug && GetBoolArg("-printstakemodifier"))
             printf("GetStakeEntropyBit(v0.3.4): nTime=%d entropybit=%d\n", nTime, nEntropyBit);
-    }
+  }*/
 
     return nEntropyBit;
 }
@@ -2416,7 +2419,7 @@ bool LoadBlockIndex(bool fAllowNew)
         printf("block.nTime = %u \n", block.nTime);
         printf("block.nNonce = %u \n", block.nNonce);
         printf("block.nBits = %u \n", block.nBits);
-        assert(block.hashMerkleRoot == uint256("0xd8eee032f95716d0cf14231dc7a238b96bbf827e349e75344c9a88e849262ee0"));
+        assert(block.hashMerkleRoot == uint256("0xa4c9a6b80a63fda23a53ef2e3b35d548ff890a40b5592e61544b0bd293f45a26"));
 
         if (block.GetHash() != hashGenesisBlock) {
             block.nNonce = 0;
