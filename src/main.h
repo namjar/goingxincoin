@@ -61,9 +61,8 @@ static const int fHaveUPnP = true;
 static const int fHaveUPnP = false;
 #endif
 
-static const uint256 hashGenesisBlockOfficial("0xa60262d94a500e06dedf6ece28d5d284d0621d93e5a8bcd9a58486e484ce41e8");
+static const uint256 hashGenesisBlockOfficial("0x559648b73ad0223b20b34a39bf4b2fd606a35bf6bd3ec6ba1f2015a3562f5c76");
 static const uint256 hashGenesisBlockTestNet("0x2aa1025ff79e48048a1da1e1bc9ed4203899dd952f3f1e95026ad76601f974b6");
-
 static const int64 nMaxClockDrift = 2 * 60 * 60;        // two hours
 
 extern CScript COINBASE_FLAGS;
@@ -1112,7 +1111,7 @@ public:
             return error("CBlock::ReadFromDisk() : OpenBlockFile failed");
         if (!fReadTransactions)
             filein.nType |= SER_BLOCKHEADERONLY;
-
+ 
         // Read block
         try {
             filein >> *this;

@@ -780,7 +780,6 @@ double GetDifficulty(unsigned int nBits) {
 int64 GetProofOfWorkReward(unsigned int nBits, unsigned int nHeight) {
 
   //@todo new arguments blockindex->nHeight
-  nHeight = int64(nHeight);
   CBigNum bnSubsidyLimit = MAX_MINT_PROOF_OF_WORK;
   //CBigNum bnTarget;
   //bnTarget.SetCompact(nBits);
@@ -792,8 +791,8 @@ int64 GetProofOfWorkReward(unsigned int nBits, unsigned int nHeight) {
   // (nSubsidyLimit / nSubsidy) ** 4 == bnProofOfWorkLimit / bnTarget
   CBigNum bnLowerBound = CENT;
   CBigNum bnUpperBound = bnSubsidyLimit;
-  CBigNum bnMidPart,
-  bnRewardPart;
+  //CBigNum bnMidPart,
+  //bnRewardPart;
 
   //if (GetDifficulty(nBits) < 512) {
   //    while (bnLowerBound + CENT <= bnUpperBound)
@@ -837,7 +836,7 @@ int64 GetProofOfWorkReward(unsigned int nBits, unsigned int nHeight) {
   if (fDebug && GetBoolArg("-printcreation"))
     printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%" PRI64d "\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
 
-  return min(nSubsidy, MAX_MINT_PROOF_OF_WORK);
+  return nSubsidy;
 }
 
 // ppcoin: miner's coin stake is rewarded based on coin age spent (coin-days)
@@ -2110,7 +2109,7 @@ bool LoadBlockIndex(bool fAllowNew) {
     hashGenesisBlock = hashGenesisBlockTestNet;
     bnProofOfWorkLimit = CBigNum(~uint256(0) >> 28);
     nStakeMinAge = 60 * 60 * 24; // test net min age is 1 day
-    nCoinbaseMaturity = 1;
+    nCoinbaseMaturity = 1; 
     bnInitialHashTarget = CBigNum(~uint256(0) >> 29);
     nModifierInterval = 60 * 20; // test net modifier interval is 20 minutes
   }
@@ -2143,7 +2142,7 @@ bool LoadBlockIndex(bool fAllowNew) {
     // Genesis block
     const char * pszTimestamp = "Integrity is the lifeblood of life, is the foundation of all value.";
     CTransaction txNew;
-    txNew.nTime = 1474288051;
+    txNew.nTime = 1468950963;
     txNew.vin.resize(1);
     txNew.vout.resize(1);
     txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(9999) << vector < unsigned char > ((const unsigned char * )pszTimestamp, (const unsigned char * )pszTimestamp + strlen(pszTimestamp));
@@ -2154,13 +2153,13 @@ bool LoadBlockIndex(bool fAllowNew) {
     block.hashPrevBlock = 0;
     block.hashMerkleRoot = block.BuildMerkleTree();
     block.nVersion = 1;
-    block.nTime = 1474288051;
+    block.nTime = 1468960973;
     block.nBits = bnProofOfWorkLimit.GetCompact();
-    block.nNonce = 139946546u;
+    block.nNonce = 139946546;
 
     if (fTestNet) {
-      block.nTime = 1474288051;
-      block.nNonce = 18330017;
+      block.nTime = 1468960973;
+      block.nNonce = 0;
     }
 
     //// debug print
@@ -2170,7 +2169,7 @@ bool LoadBlockIndex(bool fAllowNew) {
     printf("block.nTime = %u \n", block.nTime);
     printf("block.nNonce = %u \n", block.nNonce);
     printf("block.nBits = %u \n", block.nBits);
-    assert(block.hashMerkleRoot == uint256("0x0dab727ec94e57c43afc19c09457fa1f641a09c19587773b9f283022962e5c0c"));
+    assert(block.hashMerkleRoot == uint256("0xa54b4193bae216cb2ecf63751f83a225e509fdeb644258a04f98fd69945d7e53"));
 
     if (block.GetHash() != hashGenesisBlock) {
       block.nNonce = 0;
