@@ -27,10 +27,10 @@ namespace Checkpoints
     static MapCheckpoints mapCheckpoints =
         boost::assign::map_list_of
         ( 0, hashGenesisBlockOfficial )
-      /*  ( 25000, uint256("20cc6639e9593e4e9344e1d40a234c552da81cb90b991aed6200ff0f72a69719"))
+     /*   ( 25000, uint256("20cc6639e9593e4e9344e1d40a234c552da81cb90b991aed6200ff0f72a69719"))
         ( 50000, uint256("4c3d02a982bcb47ed9e076f754870606a6892d258720dc13863e10badbfd0e78"))
         ( 100000, uint256("0000000000000071c614fefb88072459cced7b9d9a9cffd04064d3c3d539ecaf"))
-	  ( 137250, uint256("6c9e7cebac95ac26e9137765c6ac6361fe3f9cbcbbc49eac73b59504ef3dc7b4"))*/
+	 ( 137250, uint256("6c9e7cebac95ac26e9137765c6ac6361fe3f9cbcbbc49eac73b59504ef3dc7b4"))*/
         ;
 
     bool CheckHardened(int nHeight, const uint256& hash)
@@ -46,7 +46,8 @@ namespace Checkpoints
     {
         if (fTestNet) return 0;
 
-        return mapCheckpoints.rbegin()->first;
+        //return mapCheckpoints.rbegin()->first;
+		return 0;
     }
 
     CBlockIndex* GetLastCheckpoint(const std::map<uint256, CBlockIndex*>& mapBlockIndex)
@@ -62,8 +63,8 @@ namespace Checkpoints
         {
             const uint256& hash = i.second;
             std::map<uint256, CBlockIndex*>::const_iterator t = mapBlockIndex.find(hash);
-            if (t != mapBlockIndex.end())
-                return t->second;
+           // if (t != mapBlockIndex.end())
+           //     return t->second;
         }
         return NULL;
     }
@@ -370,7 +371,7 @@ namespace Checkpoints
 }
 
 // gongxincoin: sync-checkpoint master key
-const std::string CSyncCheckpoint::strMasterPubKey = "04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f";
+const std::string CSyncCheckpoint::strMasterPubKey = "046fbfdd8aac1671681dfe257a65cb1a87056814955ae1faeefa20c158a66ad5514c77f858a417da79f56c69e97ece8c5363dbd41994db22435596f84a002736b0";
 std::string CSyncCheckpoint::strMasterPrivKey = "";
 
 // ppcoin: verify signature of sync-checkpoint message

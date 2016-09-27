@@ -34,7 +34,7 @@ map<uint256, CBlockIndex*> mapBlockIndex;
 set<pair<COutPoint, unsigned int> > setStakeSeen;
 uint256 hashGenesisBlock = hashGenesisBlockOfficial;
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 32);
-static CBigNum bnInitialHashTarget(~uint256(0) >> 12);
+static CBigNum bnInitialHashTarget(~uint256(0) >> 32);
 unsigned int nStakeMinAge = STAKE_MIN_AGE;
 int nCoinbaseMaturity = COINBASE_MATURITY_PPC;
 CBlockIndex* pindexGenesisBlock = NULL;
@@ -901,9 +901,7 @@ double GetDifficulty(unsigned int nBits)
 
 int64 GetProofOfWorkReward(unsigned int nBits)
 {
-	return MAX_MINT_PROOF_OF_WORK;
-	/*
-	CBigNum bnSubsidyLimit = MAX_MINT_PROOF_OF_WORK;
+   /* CBigNum bnSubsidyLimit = MAX_MINT_PROOF_OF_WORK;
     CBigNum bnTarget;
     bnTarget.SetCompact(nBits);
     CBigNum bnTargetLimit = bnProofOfWorkLimit;
@@ -950,7 +948,7 @@ int64 GetProofOfWorkReward(unsigned int nBits)
         printf("GetProofOfWorkReward() : create=%s nBits=0x%08x nSubsidy=%"PRI64d"\n", FormatMoney(nSubsidy).c_str(), nBits, nSubsidy);
 
     return min(nSubsidy, MAX_MINT_PROOF_OF_WORK);*/
-	
+	return MAX_MINT_PROOF_OF_WORK;
 }
 
 // ppcoin: miner's coin stake is rewarded based on coin age spent (coin-days)
@@ -1945,7 +1943,6 @@ bool CBlock::CheckBlock() const
 {
     // These are checks that are independent of context
     // that can be verified before saving an orphan block.
-
     // Size limits
     if (vtx.empty() || vtx.size() > MAX_BLOCK_SIZE || ::GetSerializeSize(*this, SER_NETWORK, PROTOCOL_VERSION) > MAX_BLOCK_SIZE)
         return DoS(100, error("CheckBlock() : size limits failed"));
@@ -2024,7 +2021,7 @@ bool CBlock::CheckBlock() const
     // ppcoin: check block signature
     if (!CheckBlockSignature())
         return DoS(100, error("CheckBlock() : bad block signature"));
-
+  
     return true;
 }
 
@@ -2041,21 +2038,30 @@ bool CBlock::AcceptBlock()
         return DoS(10, error("AcceptBlock() : prev block not found"));
     CBlockIndex* pindexPrev = (*mi).second;
     int nHeight = pindexPrev->nHeight+1;
+	
+	if (IsProofOfWork() && nHeight > CUTOFF_POW_BLOCK)
+        return DoS(100, error("AcceptBlock() : No proof-of-work allowed anymore (height = %d)", nHeight));
+    if (IsProofOfStake() && nHeight > CUTOFF_POW_BLOCK)
+        return DoS(100, error("AcceptBlock() : No proof-of-stake not allowed (height = %d)", nHeight));
+    // Check proof-of-work or proof-of-stake
+    if (nBits != GetNextTargetRequired(pindexPrev, IsProofOfStake()))
+        return DoS(100, error("AcceptBlock() : incorrect %s", IsProofOfWork() ? "proof-of-work" : "proof-of-stake"));
+
 
     // Check proof-of-work or proof-of-stake
-    if (nHeight > 10000)
-    {
-        if (nBits != GetNextTargetRequired(pindexPrev, IsProofOfStake()))
-            return DoS(100, error("AcceptBlock() : incorrect proof-of-work/proof-of-stake"));
-    }
-    else
-    {
-        // this is needed only for gongxincoin official blockchain, because of mistake we made at the beginning
-        unsigned int check = GetNextTargetRequired(pindexPrev, IsProofOfStake());
-        unsigned int max_error = check / 100000;
-        if (!(nBits >= check - max_error && nBits <= check + max_error)) // +- 0.001% interval
-            return DoS(100, error("AcceptBlock() : incorrect proof-of-work/proof-of-stake"));
-    }
+  //  if (nHeight > 10000)
+  //  {
+  //      if (nBits != GetNextTargetRequired(pindexPrev, IsProofOfStake()))
+  //          return DoS(100, error("AcceptBlock() : incorrect proof-of-work/proof-of-stake"));
+  //  }
+  //  else
+  //  {
+  //      // this is needed only for gongxincoin official blockchain, because of mistake we made at the beginning
+  //      unsigned int check = GetNextTargetRequired(pindexPrev, IsProofOfStake());
+  //      unsigned int max_error = check / 100000;
+  //      if (!(nBits >= check - max_error && nBits <= check + max_error)) // +- 0.001% interval
+  //          return DoS(100, error("AcceptBlock() : incorrect proof-of-work/proof-of-stake"));
+  //  }
 
     // Check timestamp against prev
     if (GetBlockTime() <= pindexPrev->GetMedianTimePast() || GetBlockTime() + nMaxClockDrift < pindexPrev->GetBlockTime())
@@ -2270,19 +2276,19 @@ bool CBlock::CheckBlockSignature() const
 unsigned int CBlock::GetStakeEntropyBit(int32_t height) const
 {
     unsigned int nEntropyBit = 0;
-   // if (IsProtocolV04(nTime)) //@mod not use old procotol only new
+   // if (IsProtocolV04(nTime))
    // {
         nEntropyBit = GetHash().Get64() & 1llu;// last bit of block hash
         if (fDebug && GetBoolArg("-printstakemodifier"))
             printf("GetStakeEntropyBit(v0.3.5+): nTime=%u hashBlock=%s entropybit=%d\n", nTime, GetHash().ToString().c_str(), nEntropyBit);
-   // }
-  /*  else if (height > -1 && height <= vEntropyBits_number_of_blocks)
-    {
-        // old protocol for entropy bit pre v0.4; exctracted from precomputed table.
-        nEntropyBit = (vEntropyBits[height >> 5] >> (height & 0x1f)) & 1;
-        if (fDebug && GetBoolArg("-printstakemodifier"))
-            printf("GetStakeEntropyBit(v0.3.4): nTime=%d entropybit=%d\n", nTime, nEntropyBit);
-  }*/
+    //}
+    //else if (height > -1 && height <= vEntropyBits_number_of_blocks)
+    //{
+    //    // old protocol for entropy bit pre v0.4; exctracted from precomputed table.
+    //    nEntropyBit = (vEntropyBits[height >> 5] >> (height & 0x1f)) & 1;
+    //    if (fDebug && GetBoolArg("-printstakemodifier"))
+    //        printf("GetStakeEntropyBit(v0.3.4): nTime=%d entropybit=%d\n", nTime, nEntropyBit);
+    //}
 
     return nEntropyBit;
 }
@@ -2396,20 +2402,20 @@ bool LoadBlockIndex(bool fAllowNew)
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(9999) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].SetEmpty();
+        txNew.vout[0].nValue = MAX_MINT_PROOF_OF_WORK;
         CBlock block;
         block.vtx.push_back(txNew);
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1386628033;
+        block.nTime    = 1386628034;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 139946546u;
+        block.nNonce   = 1958845568;
 
         if (fTestNet)
         {
-            block.nTime    = 1386628033;
-            block.nNonce   = 18330017;
+            block.nTime    = 1386628034;
+            block.nNonce   = 259598148;
         }
 
         //// debug print
@@ -2419,7 +2425,7 @@ bool LoadBlockIndex(bool fAllowNew)
         printf("block.nTime = %u \n", block.nTime);
         printf("block.nNonce = %u \n", block.nNonce);
         printf("block.nBits = %u \n", block.nBits);
-        assert(block.hashMerkleRoot == uint256("0xa4c9a6b80a63fda23a53ef2e3b35d548ff890a40b5592e61544b0bd293f45a26"));
+        assert(block.hashMerkleRoot == uint256("0x07396fbab3c9a580381d6d75c5c00c5471ceb44beb763c0d7c7b2a945421f9e5"));
 
         if (block.GetHash() != hashGenesisBlock) {
             block.nNonce = 0;

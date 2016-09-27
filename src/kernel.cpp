@@ -32,8 +32,7 @@ uint256HashMap<StakeMod> StakeModCache;
 // Hard checkpoints of stake modifiers to ensure they are deterministic
 static std::map<int, unsigned int> mapStakeModifierCheckpoints =
     boost::assign::map_list_of
-    ( 0, 0x0e00670bu )
-    ( 19000, 0xb185c126u )
+    ( 0, 0x5f12b8f5e8 )
     ;
 
 // Whether the given coinstake is subject to new v0.3 protocol
@@ -474,7 +473,7 @@ unsigned int GetStakeModifierChecksum(const CBlockIndex* pindex)
 bool CheckStakeModifierCheckpoints(int nHeight, unsigned int nStakeModifierChecksum)
 {
     if (fTestNet) return true; // Testnet has no checkpoints
-    if (mapStakeModifierCheckpoints.count(nHeight))
-        return nStakeModifierChecksum == mapStakeModifierCheckpoints[nHeight];
+   // if (mapStakeModifierCheckpoints.count(nHeight))
+   //     return nStakeModifierChecksum == mapStakeModifierCheckpoints[nHeight];
     return true;
 }

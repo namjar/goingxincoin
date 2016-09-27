@@ -39,16 +39,16 @@ static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const int64 MIN_TX_FEE = CENT;
 static const int64 MIN_RELAY_TX_FEE = 2 * SUBCENT;
 static const int64 MAX_MONEY = 1000000000000 * COIN;
-static const int64 MAX_MINT_PROOF_OF_WORK = 300000000000 * COIN;
+static const int64 MAX_MINT_PROOF_OF_WORK = 100000000000 * COIN; //@ todo cambiare gestione reward per blocco, ora è 5020 
 static const int64 MIN_TXOUT_AMOUNT = MIN_TX_FEE;
 inline bool MoneyRange(int64 nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 static const int COINBASE_MATURITY_PPC = 30; //12+20 = 32
 // Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
 static const int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
 static const int STAKE_TARGET_SPACING = 1 * 60; // 10-minute block spacing 
-//static const int STAKE_MIN_AGE = 60 * 60 * 24 * 30; // minimum age for coin age
-static const int STAKE_MIN_AGE = 60 * 60 * 1; // minimum age for coin age
-static const int STAKE_MAX_AGE = 60 * 60 * 24 * 15; // stake age of full weight
+static const int STAKE_MIN_AGE = 60 * 60 * 24 * 30; // minimum age for coin age
+static const int STAKE_MAX_AGE = 60 * 60 * 24 * 60; // stake age of full weight
+static const int CUTOFF_POW_BLOCK = 10;
 
 #ifdef USE_UPNP
 static const int fHaveUPnP = true;
@@ -56,13 +56,17 @@ static const int fHaveUPnP = true;
 static const int fHaveUPnP = false;
 #endif
 
-static const uint256 hashGenesisBlockOfficial("0xb92d8263044dd9e9a6bf659722e6dc06a676d485fd7fcbf7218b4515b1e9357f");
-static const uint256 hashGenesisBlockTestNet("0x0000000810da236a5c9239aa1c49ab971de289dbd41d08c4120fc9c8920d2212");
+static const uint256 hashGenesisBlockOfficial("0xa60262d94a500e06dedf6ece28d5d284d0621d93e5a8bcd9a58486e484ce41e8");
+static const uint256 hashGenesisBlockTestNet("0x0000000c901d1fc64435e7ebb167923b3f040cf817369195dbb7d7534a0cfefb");
 
-//static const int64 nMaxClockDrift = 2 * 60 * 60;        // two hours
-static const int64 nMaxClockDrift = 1 * 60 * 60;        // two hours
+static const int64 nMaxClockDrift = 2 * 60 * 60;        // two hour
 
 extern CScript COINBASE_FLAGS;
+
+
+
+
+
 
 extern CCriticalSection cs_main;
 extern std::map<uint256, CBlockIndex*> mapBlockIndex;
@@ -127,6 +131,13 @@ uint256 WantedByOrphan(const CBlock* pblockOrphan);
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfStake);
 void BitcoinMiner(CWallet *pwallet, bool fProofOfStake);
 bool GetTransaction(const uint256 &hash, CTransaction &tx, uint256 &hashBlock);
+
+
+
+
+
+
+
 
 
 bool GetWalletFile(CWallet* pwallet, std::string &strWalletFileOut);
